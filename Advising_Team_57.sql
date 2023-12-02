@@ -829,7 +829,7 @@ WHERE s.end_date > GETDATE()
 ORDER BY s.end_date
 
 IF @semesterCode IS NULL
-    RETURN
+	RETURN
 
 IF EXISTS (SELECT *
 	FROM PreqCourse_course pc
