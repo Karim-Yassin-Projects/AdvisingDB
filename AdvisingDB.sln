@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "AdvisingDB", "AdvisingDB\AdvisingDB.sqlproj", "{0CB47D9A-9375-497F-AA43-BBC6F331D37D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0CB47D9A-9375-497F-AA43-BBC6F331D37D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CB47D9A-9375-497F-AA43-BBC6F331D37D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CB47D9A-9375-497F-AA43-BBC6F331D37D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{0CB47D9A-9375-497F-AA43-BBC6F331D37D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CB47D9A-9375-497F-AA43-BBC6F331D37D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CB47D9A-9375-497F-AA43-BBC6F331D37D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {90C3BD3E-F727-42EA-B062-980B331DE079}
+	EndGlobalSection
+EndGlobal
