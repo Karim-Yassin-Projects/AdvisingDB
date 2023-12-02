@@ -114,6 +114,8 @@
     <None Include="procs\Procedures_ViewOptionalCourses.sql" />
     <None Include="procs\Procedures_ViewMS.sql" />
     <None Include="DataPopulation.sql" />
-    <None Include="FN_CalculateStatus.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="fns\FN_CalculateStatus.sql" />
   </ItemGroup>
 </Project>
