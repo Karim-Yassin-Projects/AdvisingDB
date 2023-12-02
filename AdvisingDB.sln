@@ -5,6 +5,13 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "AdvisingDB", "AdvisingDB\AdvisingDB.sqlproj", "{0CB47D9A-9375-497F-AA43-BBC6F331D37D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{4749F300-166D-4DA8-967F-4DF79A3E40CB}"
+	ProjectSection(SolutionItems) = preProject
+		Docs\M1.pdf = Docs\M1.pdf
+		Docs\M2.pdf = Docs\M2.pdf
+		Docs\M2CommonPoints.pdf = Docs\M2CommonPoints.pdf
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
