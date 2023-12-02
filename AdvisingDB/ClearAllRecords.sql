@@ -1,0 +1,20 @@
+﻿CREATE PROC ClearAllRecords AS
+TRUNCATE TABLE Installment
+TRUNCATE TABLE Payment
+TRUNCATE TABLE Exam_Student
+TRUNCATE TABLE MakeUp_Exam
+TRUNCATE TABLE Request
+TRUNCATE TABLE GradPlan_Course
+TRUNCATE TABLE Graduation_Plan
+TRUNCATE TABLE Slot
+TRUNCATE TABLE Course_Semester
+TRUNCATE TABLE Semester
+TRUNCATE TABLE Student_Instructor_Course_Take
+TRUNCATE TABLE Instructor_Course
+TRUNCATE TABLE Instructor
+TRUNCATE TABLE PreqCourse_course
+TRUNCATE TABLE Course
+TRUNCATE TABLE Student_Phone
+TRUNCATE TABLE Student
+TRUNCATE TABLE Advisor
+GO

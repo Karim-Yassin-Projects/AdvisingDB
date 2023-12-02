@@ -56,8 +56,20 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="views" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CreateAllTables.sql" />
+    <None Include="DropAllTables.sql" />
+    <None Include="ClearAllRecords.sql" />
+    <None Include="views\view_Students.sql" />
+    <None Include="views\view_Course_prerequisites.sql" />
+    <None Include="views\Instructors_AssignedCourses.sql" />
+    <None Include="views\Student_Payment.sql" />
+    <None Include="views\Courses_Slots_Instructor.sql" />
+    <None Include="views\Courses_MakeupExams.sql" />
+    <None Include="views\Students_Courses_Transcript.sql" />
+    <None Include="views\Semester_offered_Courses.sql" />
+    <None Include="views\Advisors_Graduation_Plan.sql" />
   </ItemGroup>
 </Project>

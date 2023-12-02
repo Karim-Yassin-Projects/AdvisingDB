@@ -1,0 +1,19 @@
+﻿CREATE OR ALTER PROC DropALLTables AS
+DROP TABLE Installment
+DROP TABLE Payment
+DROP TABLE Exam_Student
+DROP TABLE Makeup_Exam
+DROP TABLE Request
+DROP TABLE GradPlan_Course
+DROP TABLE Graduation_Plan
+DROP TABLE Slot
+DROP TABLE Course_Semester
+DROP TABLE Semester
+DROP TABLE Student_Instructor_Course_Take
+DROP TABLE Instructor_Course
+DROP TABLE Instructor
+DROP TABLE PreqCourse_course
+DROP TABLE Course
+DROP TABLE Student_Phone
+DROP TABLE Student
+DROP TABLE Advisor
