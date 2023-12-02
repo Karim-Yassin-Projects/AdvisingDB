@@ -57,6 +57,8 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="views" />
+    <Folder Include="procs" />
+    <Folder Include="fns" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CreateAllTables.sql" />
@@ -71,5 +73,46 @@
     <None Include="views\Students_Courses_Transcript.sql" />
     <None Include="views\Semester_offered_Courses.sql" />
     <None Include="views\Advisors_Graduation_Plan.sql" />
+    <None Include="procs\Procedures_StudentRegistration.sql" />
+    <None Include="procs\Procedures_AdvisorRegistration.sql" />
+    <None Include="procs\Procedures_AdminListStudents.sql" />
+    <None Include="procs\Procedures_AdminListAdvisors.sql" />
+    <None Include="procs\AdminListStudentsWithAdvisors.sql" />
+    <None Include="procs\AdminAddingSemester.sql" />
+    <None Include="procs\Procedures_AdminAddingCourse.sql" />
+    <None Include="procs\Procedures_AdminLinkInstructor.sql" />
+    <None Include="procs\Procedures_AdminLinkStudent.sql" />
+    <None Include="procs\Procedures_AdminLinkStudentToAdvisor.sql" />
+    <None Include="procs\Procedures_AdminAddExam.sql" />
+    <None Include="procs\Procedures_AdminIssueInstallment.sql" />
+    <None Include="procs\Procedures_AdminDeleteCourse.sql" />
+    <None Include="procs\Procedures_AdminUpdateStudentStatus.sql" />
+    <None Include="views\all_Pending_Requests.sql" />
+    <None Include="procs\Procedures_AdminDeleteSlots.sql" />
+    <None Include="fns\FN_AdvisorLogin.sql" />
+    <None Include="procs\Procedures_AdvisorCreateGP.sql" />
+    <None Include="procs\Procedures_AdvisorADDCourseGP.sql" />
+    <None Include="procs\Procedures_AdvisorUpdateGP.sql" />
+    <None Include="procs\Procedures_AdvisorDeleteFromGP.sql" />
+    <None Include="fns\FN_Advisors_Request.sql" />
+    <None Include="procs\Procedures_AdvisorApproveRejectCHRequest.sql" />
+    <None Include="procs\Procedures_AdvisorViewAssignedStudents.sql" />
+    <None Include="procs\Procedures_AdvisorApproveRejectCourseRequest.sql" />
+    <None Include="procs\Procedures_AdvisorViewPendingRequests.sql" />
+    <None Include="fns\FN_StudentLogin.sql" />
+    <None Include="procs\Procedures_StudentAddMobile.sql" />
+    <None Include="fns\FN_SemesterAvailableCourses.sql" />
+    <None Include="procs\Procedures_StudentSendingCourseRequest.sql" />
+    <None Include="procs\Procedures_StudentSendingCHRequest.sql" />
+    <None Include="fns\FN_StudentViewGP.sql" />
+    <None Include="fns\FN_StudentUpcoming_installment.sql" />
+    <None Include="fns\FN_StudentViewSlot.sql" />
+    <None Include="fns\FN_IsEvenSemesterCode.sql" />
+    <None Include="fns\FN_StudentCheckSMEligibility.sql" />
+    <None Include="procs\Procedures_StudentRegisterSecondMakeup.sql" />
+    <None Include="procs\Procedures_ViewRequiredCourses.sql" />
+    <None Include="procs\Procedures_ViewOptionalCourses.sql" />
+    <None Include="procs\Procedures_ViewMS.sql" />
+    <None Include="DataPopulation.sql" />
   </ItemGroup>
 </Project>
