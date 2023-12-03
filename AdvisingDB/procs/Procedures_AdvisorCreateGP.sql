@@ -1,4 +1,4 @@
-﻿CREATE PROC Procedures_AdvisorCreateGP(
+﻿CREATE OR ALTER PROC Procedures_AdvisorCreateGP(
 @semester_code VARCHAR(40),
 @expected_graduation_date DATE,
 @sem_credit_hours INT,

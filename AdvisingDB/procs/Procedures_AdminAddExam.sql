@@ -1,4 +1,4 @@
-﻿CREATE PROC Procedures_AdminAddExam (
+﻿CREATE OR ALTER PROC Procedures_AdminAddExam (
 @Type  VARCHAR(40),
 @date DATETIME,
 @course_id INT

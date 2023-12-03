@@ -1,4 +1,4 @@
-﻿CREATE PROC Procedures_StudentRegistration(
+﻿CREATE OR ALTER PROC Procedures_StudentRegistration(
 @first_name	VARCHAR(40),
 @last_name VARCHAR(40),
 @password VARCHAR(40),

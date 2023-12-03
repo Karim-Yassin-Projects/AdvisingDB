@@ -1,4 +1,4 @@
-﻿CREATE PROC Procedures_AdminIssueInstallment (
+﻿CREATE OR ALTER PROC Procedures_AdminIssueInstallment (
 @payment_id INT
 )
 AS

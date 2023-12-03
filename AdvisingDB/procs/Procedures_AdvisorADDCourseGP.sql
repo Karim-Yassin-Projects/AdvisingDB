@@ -1,4 +1,4 @@
-﻿CREATE PROC Procedures_AdvisorADDCourseGP (
+﻿CREATE OR ALTER PROC Procedures_AdvisorADDCourseGP (
 @student_id INT,
 @semester_code VARCHAR(40),
 @course_name VARCHAR(40)

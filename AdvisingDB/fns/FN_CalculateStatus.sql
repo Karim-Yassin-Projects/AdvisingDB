@@ -1,4 +1,4 @@
-﻿CREATE FUNCTION FN_CalculateStatus(
+﻿CREATE OR ALTER FUNCTION FN_CalculateStatus(
 @studentID INT
 )
 RETURNS BIT

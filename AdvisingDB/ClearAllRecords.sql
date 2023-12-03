@@ -1,4 +1,4 @@
-﻿CREATE PROC ClearAllRecords AS
+﻿CREATE OR ALTER PROC ClearAllRecords AS
 TRUNCATE TABLE Installment
 TRUNCATE TABLE Payment
 TRUNCATE TABLE Exam_Student

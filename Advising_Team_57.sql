@@ -205,7 +205,7 @@ DROP TABLE Advisor
 
 GO
 
-CREATE PROC ClearAllRecords AS
+CREATE OR ALTER PROC ClearAllRecords AS
 TRUNCATE TABLE Installment
 TRUNCATE TABLE Payment
 TRUNCATE TABLE Exam_Student
@@ -353,7 +353,7 @@ WHERE advisor_id = @advisor_id
 
 GO
 
-CREATE FUNCTION FN_CalculateStatus(
+CREATE OR ALTER FUNCTION FN_CalculateStatus(
 @studentID INT
 )
 RETURNS BIT
@@ -419,7 +419,7 @@ AND (sict.grade = 'F' OR sict.grade = 'FF')
 AND (s.semester % 2 = 0 AND dbo.FN_IsEvenSemesterCode(sict.semester_code) = 1 OR 
 s.semester % 2 = 1 AND dbo.FN_IsEvenSemesterCode(sict.semester_code) = 0)
 
-RETURN CASE WHEN @countFailedCourse <= 2 THEN 1 ELSE 0 END
+RETURN CASE WHEN @countFailedCourses <= 2 THEN 1 ELSE 0 END
 END
 
 
@@ -449,7 +449,7 @@ BEGIN
 DECLARE @deadline DATETIME
 SELECT TOP 1 @deadline = i.deadline
 FROM Installment i, Payment p
-WHERE p.payment_id = i.payment_id AND p.student_id = @student_id AND i.statuts = 'notPaid'
+WHERE p.payment_id = i.payment_id AND p.student_id = @student_id AND i.status = 'notPaid'
 ORDER BY i.deadline
 
 RETURN @deadline
@@ -464,8 +464,8 @@ CREATE OR ALTER FUNCTION FN_StudentViewGP(
 RETURNS TABLE
 AS
 RETURN(
-SELECT s.f_name, '', s.l_name AS StudentName, s.student_id, 
-g.plan_id AS PlanID, gc.course_id AS CourseID, c.course_name, c.semester_code, g.expected_grad_date, g.semester_credit_hours, g.advisor_id
+SELECT s.f_name + ' ' + s.l_name AS StudentName, s.student_id, 
+g.plan_id AS PlanID, gc.course_id AS CourseID, c.course_name, g.semester_code, g.expected_grad_date, g.semester_credit_hours, g.advisor_id
 FROM Student s
 INNER JOIN Graduation_Plan g ON g.student_id = s.student_id
 INNER JOIN GradPlan_Course gc ON gc.plan_id = g.plan_id
@@ -513,7 +513,7 @@ Advisor a ON s.advisor_id = a.advisor_id
 
 GO
 
-CREATE PROC Procedures_AdminAddExam (
+CREATE OR ALTER PROC Procedures_AdminAddExam (
 @Type  VARCHAR(40),
 @date DATETIME,
 @course_id INT
@@ -591,7 +591,7 @@ END
 
 GO
 
-CREATE PROC Procedures_AdminIssueInstallment (
+CREATE OR ALTER PROC Procedures_AdminIssueInstallment (
 @payment_id INT
 )
 AS
@@ -710,7 +710,7 @@ END
 
 GO
 
-CREATE PROC Procedures_AdvisorADDCourseGP (
+CREATE OR ALTER PROC Procedures_AdvisorADDCourseGP (
 @student_id INT,
 @semester_code VARCHAR(40),
 @course_name VARCHAR(40)
@@ -861,7 +861,7 @@ END
 
 GO
 
-CREATE PROC Procedures_AdvisorCreateGP(
+CREATE OR ALTER PROC Procedures_AdvisorCreateGP(
 @semester_code VARCHAR(40),
 @expected_graduation_date DATE,
 @sem_credit_hours INT,
@@ -1013,7 +1013,7 @@ END
 
 GO
 
-CREATE PROC Procedures_StudentRegistration(
+CREATE OR ALTER PROC Procedures_StudentRegistration(
 @first_name	VARCHAR(40),
 @last_name VARCHAR(40),
 @password VARCHAR(40),
@@ -1058,8 +1058,12 @@ CREATE OR ALTER PROC Procedures_StudentSendingCourseRequest(
 )
 AS
 BEGIN
+
+DECLARE @creditHours int, @advisorID int
+SELECT @creditHours = credit_hours FROM Course WHERE course_id = @courseID
+SELECT @advisorID = advisor_id FROM Student WHERE student_id = @studentID
 INSERT INTO Request(type, comment, status, credit_hours, student_id, advisor_id, course_id)
-VALUES(@type, @comment, 'pending', (SELECT credit_hours FROM Request WHERE course_id = @courseID), @studentID, @courseID)
+VALUES(@type, @comment, 'pending', @creditHours, @studentID, @advisorID, @courseID)
 END
 
 

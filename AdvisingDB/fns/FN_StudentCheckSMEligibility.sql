@@ -14,5 +14,5 @@ AND (sict.grade = 'F' OR sict.grade = 'FF')
 AND (s.semester % 2 = 0 AND dbo.FN_IsEvenSemesterCode(sict.semester_code) = 1 OR 
 s.semester % 2 = 1 AND dbo.FN_IsEvenSemesterCode(sict.semester_code) = 0)
 
-RETURN CASE WHEN @countFailedCourse <= 2 THEN 1 ELSE 0 END
+RETURN CASE WHEN @countFailedCourses <= 2 THEN 1 ELSE 0 END
 END
