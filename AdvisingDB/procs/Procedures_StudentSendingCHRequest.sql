@@ -15,4 +15,5 @@ WHERE s.student_id = @student_id
 
 INSERT INTO Request(student_id,credit_hours,type,comment, advisor_id)
 VALUES(@student_id, @credit_hours, @type, @comment, @advisor_id)
+
 END

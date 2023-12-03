@@ -662,6 +662,12 @@ CREATE OR ALTER PROC Procedures_AdminLinkStudent(
 @semester_code VARCHAR(40)
 )
 AS
+IF NOT EXISTS (SELECT * FROM Instructor_Course WHERE
+	instructor_id = @instructor_id AND course_id = @course_id)
+BEGIN
+	PRINT 'Instructor does not teach this course'
+	RETURN
+END
 INSERT INTO Student_Instructor_Course_Take (instructor_id, student_id, course_Id, semester_code)
 VALUES (@instructor_id, @student_id, @course_id, @semester_code)
 
@@ -801,17 +807,57 @@ BEGIN
 	SET @status = 'accepted'
 	SET @comment = 'request accepted.'
 	UPDATE Student
-	SET assigned_hours = @assignedHours + @hoursRequested
+		SET assigned_hours = @assignedHours + @hoursRequested
+		WHERE student_id = @studentId
+	
+	DECLARE @paymentId int
+	SELECT @paymentId = payment_id FROM Payment 
 	WHERE student_id = @studentId
-	UPDATE Payment
-	SET amount = amount+(1000*@hoursRequested)
+	AND semester_code = @semesterCode
+
+	IF @paymentId IS NULL
+	BEGIN
+		INSERT INTO Payment
+		(amount, deadline, n_installments, status, fund_percentage, student_id, start_date, semester_code)
+		VALUES
+		(1000*@hoursRequested, DATEADD(month, 1, GETDATE()), 0, 'notPaid', 0, @studentId, GETDATE(), @semesterCode) 
+		SELECT @paymentId = SCOPE_IDENTITY()
+	END
+	ELSE
+	BEGIN
+		UPDATE Payment
+			SET amount = amount+(1000*@hoursRequested),
+			status = 'notPaid'
+			WHERE payment_id = @paymentId
+		
+		
+	END
+
+	DECLARE @deadline DATETIME
+	SELECT TOP 1 @deadline = deadline
+	FROM Installment
+	WHERE payment_id = @paymentId
+	AND deadline > GETDATE()
+	ORDER BY deadline
+
+	if @deadline IS NULL
+	BEGIN
+		INSERT INTO Installment (payment_id, deadline, amount, status, start_date)
+		VALUES
+		(@paymentId, DATEADD(month, 1, GETDATE()), 1000 * @hoursRequested, 'notPaid', GETDATE())
+		UPDATE Payment SET n_installments = n_installments + 1 WHERE payment_id = @paymentId
+	END
+	ELSE
+	BEGIN
+		UPDATE Installment
+		SET amount = amount + 1000*@hoursRequested,
+		status = 'notPaid'
+		WHERE payment_id = @paymentId AND deadline = @deadline
+	END
+	
+	UPDATE Student
+	SET financial_status = dbo.FN_CalculateStatus(@studentId)
 	WHERE student_id = @studentId
-	UPDATE Installment
-	SET amount = amount+(1000*@hoursRequested)
-	WHERE deadline IN (SELECT TOP 1 deadline
-	FROM Installment WHERE deadline > GETDATE()
-	GROUP BY deadline
-	)
 END
 
 UPDATE Request SET status = @status, comment = @comment WHERE request_id = @requestID
@@ -1104,10 +1150,13 @@ CREATE OR ALTER PROC Procedures_StudentRegistration(
 @student_id INT OUTPUT
 )
 AS
+
 INSERT INTO Student (f_name, l_name, password, faculty, email, major, semester, financial_status)
 VALUES(@first_name, @last_name, @password, @faculty, @email, @major, @semester, 1)
 
 SELECT @student_id = SCOPE_IDENTITY()
+
+
 
 
 GO
@@ -1129,6 +1178,7 @@ WHERE s.student_id = @student_id
 
 INSERT INTO Request(student_id,credit_hours,type,comment, advisor_id)
 VALUES(@student_id, @credit_hours, @type, @comment, @advisor_id)
+
 END
 
 GO
@@ -1165,7 +1215,7 @@ WHERE s.student_id = @studentID AND c.course_id NOT IN(
 SELECT sict.course_id
 FROM Student_Instructor_Course_Take sict
 WHERE sict.student_id = @studentID 
-AND (sict.grade IS NOT NULL AND sict.grade NOT IN ('F', 'FF', 'FA'))
+/*AND (sict.grade IS NOT NULL AND sict.grade NOT IN ('F', 'FF', 'FA'))*/
 )
 
 END

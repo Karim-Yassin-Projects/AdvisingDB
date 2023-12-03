@@ -50,17 +50,57 @@ BEGIN
 	SET @status = 'accepted'
 	SET @comment = 'request accepted.'
 	UPDATE Student
-	SET assigned_hours = @assignedHours + @hoursRequested
+		SET assigned_hours = @assignedHours + @hoursRequested
+		WHERE student_id = @studentId
+	
+	DECLARE @paymentId int
+	SELECT @paymentId = payment_id FROM Payment 
 	WHERE student_id = @studentId
-	UPDATE Payment
-	SET amount = amount+(1000*@hoursRequested)
+	AND semester_code = @semesterCode
+
+	IF @paymentId IS NULL
+	BEGIN
+		INSERT INTO Payment
+		(amount, deadline, n_installments, status, fund_percentage, student_id, start_date, semester_code)
+		VALUES
+		(1000*@hoursRequested, DATEADD(month, 1, GETDATE()), 0, 'notPaid', 0, @studentId, GETDATE(), @semesterCode) 
+		SELECT @paymentId = SCOPE_IDENTITY()
+	END
+	ELSE
+	BEGIN
+		UPDATE Payment
+			SET amount = amount+(1000*@hoursRequested),
+			status = 'notPaid'
+			WHERE payment_id = @paymentId
+		
+		
+	END
+
+	DECLARE @deadline DATETIME
+	SELECT TOP 1 @deadline = deadline
+	FROM Installment
+	WHERE payment_id = @paymentId
+	AND deadline > GETDATE()
+	ORDER BY deadline
+
+	if @deadline IS NULL
+	BEGIN
+		INSERT INTO Installment (payment_id, deadline, amount, status, start_date)
+		VALUES
+		(@paymentId, DATEADD(month, 1, GETDATE()), 1000 * @hoursRequested, 'notPaid', GETDATE())
+		UPDATE Payment SET n_installments = n_installments + 1 WHERE payment_id = @paymentId
+	END
+	ELSE
+	BEGIN
+		UPDATE Installment
+		SET amount = amount + 1000*@hoursRequested,
+		status = 'notPaid'
+		WHERE payment_id = @paymentId AND deadline = @deadline
+	END
+	
+	UPDATE Student
+	SET financial_status = dbo.FN_CalculateStatus(@studentId)
 	WHERE student_id = @studentId
-	UPDATE Installment
-	SET amount = amount+(1000*@hoursRequested)
-	WHERE deadline IN (SELECT TOP 1 deadline
-	FROM Installment WHERE deadline > GETDATE()
-	GROUP BY deadline
-	)
 END
 
 UPDATE Request SET status = @status, comment = @comment WHERE request_id = @requestID

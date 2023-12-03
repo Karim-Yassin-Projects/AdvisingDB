@@ -11,7 +11,7 @@ WHERE s.student_id = @studentID AND c.course_id NOT IN(
 SELECT sict.course_id
 FROM Student_Instructor_Course_Take sict
 WHERE sict.student_id = @studentID 
-AND (sict.grade IS NOT NULL AND sict.grade NOT IN ('F', 'FF', 'FA'))
+/*AND (sict.grade IS NOT NULL AND sict.grade NOT IN ('F', 'FF', 'FA'))*/
 )
 
 END

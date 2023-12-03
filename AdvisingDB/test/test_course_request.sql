@@ -1,19 +1,19 @@
 ﻿DECLARE @studentId int
-SET @studentId = 1
-EXECUTE Procedures_StudentSendingCourseRequest 1, 2, 'Course', 'testing course'
+DECLARE @semesterCode varchar(40)
+SELECT @semesterCode = 'S23'
+EXECUTE 
+Procedures_StudentRegistration 'test_fname', 'test_lname','test123', 'Engineering', 'test@gmail.com', 'Engineering', 4, @studentID OUTPUT 
+UPDATE student SET assigned_hours = 15 
+WHERE student_id = @studentID
+EXECUTE Procedures_AdminLinkStudentToAdvisor @studentID, 1
+EXECUTE Procedures_StudentSendingCourseRequest @studentID, 2, 'Course', 'testing course'
 
-
-DECLARE @requestId int, @semesterCode varchar(40)
+DECLARE @requestId int
 
 SELECT TOP 1 @requestId = request_id FROM Request
 ORDER BY request_id DESC
 
 SELECT * FROM Request WHERE request_id = @requestId
-
-SELECT TOP 1 @semesterCode = s.semester_code
-FROM Semester s
-WHERE s.end_date > GETDATE()
-ORDER BY s.end_date
 
 PRINT 'Semester Code ' + @semesterCode
 EXECUTE Procedures_AdvisorApproveRejectCourseRequest @requestId, @semesterCode

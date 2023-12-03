@@ -47,3 +47,5 @@ AND r.status = 'pending' AND r.type = 'Course'
 
 SELECT * FROM PreqCourse_course
 SELECT * FROM Student_Instructor_Course_Take
+
+SELECT * FROM advisor
