@@ -23,8 +23,9 @@ DELETE FROM Instructor_Course
 WHERE Instructor_Course.course_id = @courseID
 DELETE FROM Course_Semester
 WHERE Course_Semester.course_id = @courseID
-DELETE FROM Slot
-WHERE Slot.course_id = @courseID
+UPDATE Slot
+SET course_id = NULL, instructor_id = NULL
+WHERE course_id = @courseID
 -- DELETE course itself
 DELETE FROM Course
 WHERE Course.course_id = @courseID

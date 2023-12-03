@@ -98,8 +98,8 @@ slot_id INT PRIMARY KEY IDENTITY,
 slot_day VARCHAR(40) NOT NULL,
 slot_time VARCHAR(40) NOT NULL,
 slot_location VARCHAR(40) NOT NULL,
-course_id INT NOT NULL,
-instructor_id INT NOT NULL,
+course_id INT,
+instructor_id INT,
 CONSTRAINT FK_Slot_Course FOREIGN KEY(course_id) REFERENCES Course(course_id),
 CONSTRAINT FK_Slot_Instructor FOREIGN KEY(instructor_id) REFERENCES Instructor(instructor_id)
 )

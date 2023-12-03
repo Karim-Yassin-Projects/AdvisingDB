@@ -1,4 +1,16 @@
+USE MASTER
+
+GO
+
+IF EXISTS (SELECT * FROM sys.databases WHERE name = 'Advising_Team_57')
+	DROP DATABASE Advising_Team_57
+
+GO
+
 CREATE DATABASE Advising_Team_57
+
+GO
+
 USE Advising_Team_57
 
 GO
@@ -26,7 +38,7 @@ financial_status BIT NOT NULL,
 semester INT NOT NULL,
 acquired_hours INT,
 assigned_hours INT,
-advisor_id INT NOT NULL,
+advisor_id INT NULL,
 CONSTRAINT FK_Stud_Advisor FOREIGN KEY(advisor_id) REFERENCES Advisor(advisor_id)
 )
 
@@ -103,8 +115,8 @@ slot_id INT PRIMARY KEY IDENTITY,
 slot_day VARCHAR(40) NOT NULL,
 slot_time VARCHAR(40) NOT NULL,
 slot_location VARCHAR(40) NOT NULL,
-course_id INT NOT NULL,
-instructor_id INT NOT NULL,
+course_id INT,
+instructor_id INT,
 CONSTRAINT FK_Slot_Course FOREIGN KEY(course_id) REFERENCES Course(course_id),
 CONSTRAINT FK_Slot_Instructor FOREIGN KEY(instructor_id) REFERENCES Instructor(instructor_id)
 )
@@ -211,25 +223,14 @@ DROP TABLE Advisor
 GO
 
 CREATE OR ALTER PROC ClearAllRecords AS
-DELETE FROM Installment
-DELETE FROM Payment
-DELETE FROM Exam_Student
-DELETE FROM Makeup_Exam
-DELETE FROM Request
-DELETE FROM GradPlan_Course
-DELETE FROM Graduation_Plan
-DELETE FROM Slot
-DELETE FROM Course_Semester
-DELETE FROM Semester
-DELETE FROM Student_Instructor_Course_Take
-DELETE FROM Instructor_Course
-DELETE FROM Instructor
-DELETE FROM PreqCourse_course
-DELETE FROM Course
-DELETE FROM Student_Phone
-DELETE FROM Student
-DELETE FROM Advisor
+BEGIN
+	EXECUTE DropAllTables
+	EXECUTE CreateAllTables
+END
+
 GO
+
+EXECUTE CreateAllTables
 
 GO
 
@@ -399,16 +400,19 @@ END
 
 GO
 
-CREATE OR ALTER FUNCTION FN_SemesterAvailableCourses
+CREATE OR ALTER FUNCTION FN_SemsterAvailableCourses
 (@semester_code VARCHAR(40))
 RETURNS Table
 AS
 RETURN
-(SELECT cs.course_id, c.course_name FROM Course_Semester cs INNER JOIN Course C on cs.course_id = c.course_id WHERE cs.semester_code = @semester_code AND c.is_offered = 1)
+(SELECT cs.course_id, c.course_name 
+FROM Course_Semester cs 
+INNER JOIN Course C on cs.course_id = c.course_id 
+WHERE cs.semester_code = @semester_code)
 
 GO
 
-CREATE OR ALTER FUNCTION FN_StudentCheckSMEligibility(
+CREATE OR ALTER FUNCTION FN_StudentCheckSMEligiability(
 @courseID INT,
 @studentID INT
 )
@@ -416,6 +420,11 @@ RETURNS BIT
 AS
 BEGIN
 DECLARE @eligible BIT, @countFailedCourses INT
+
+IF NOT EXISTS (SELECT * FROM Student_Instructor_Course_Take sict
+WHERE sict.student_id = @studentID and sict.course_id = @courseID)
+	RETURN 0
+
 SELECT @countFailedCourses = COUNT(*)
 FROM Student_Instructor_Course_Take sict
 INNER JOIN Student s ON sict.student_id = s.student_id
@@ -475,6 +484,7 @@ FROM Student s
 INNER JOIN Graduation_Plan g ON g.student_id = s.student_id
 INNER JOIN GradPlan_Course gc ON gc.plan_id = g.plan_id
 INNER JOIN Course c ON c.course_id = gc.course_id
+WHERE s.student_id = @studentID
 )
 
 
@@ -570,8 +580,9 @@ DELETE FROM Instructor_Course
 WHERE Instructor_Course.course_id = @courseID
 DELETE FROM Course_Semester
 WHERE Course_Semester.course_id = @courseID
-DELETE FROM Slot
-WHERE Slot.course_id = @courseID
+UPDATE Slot
+SET course_id = NULL, instructor_id = NULL
+WHERE course_id = @courseID
 -- DELETE course itself
 DELETE FROM Course
 WHERE Course.course_id = @courseID
@@ -819,13 +830,15 @@ AS
 BEGIN
 DECLARE @courseID INT, @studentID INT, @status VARCHAR(40), @comment VARCHAR(40), @assignedHours INT, @semesterCode VARCHAR(40), @courseHours int, @advisorID INT
 
-SELECT @assignedHours = s.assigned_hours, @courseID = r.course_id, @courseHours = c.credit_hours
+SELECT @assignedHours = s.assigned_hours, 
+@courseID = r.course_id, @courseHours = c.credit_hours,
+@studentID = s.student_id, @advisorID = s.advisor_id
 FROM Student s
 INNER JOIN Request r
 ON r.student_id = s.student_id
 INNER JOIN Course c
 ON c.course_id = r.course_id
-WHERE r.request_id = @requestID AND r.student_id = @studentID AND r.advisor_id = @advisorID
+WHERE r.request_id = @requestID
 AND r.status = 'pending' AND r.type = 'Course'
 
 IF @assignedHours IS NULL
@@ -862,7 +875,8 @@ BEGIN
 		SELECT TOP 1 @courseID, 'Normal', NULL, ic.instructor_id, @semesterCode, @studentID
 		FROM Instructor_Course ic WHERE ic.course_id = @courseID
 END
-
+PRINT @status
+PRINT @comment
 UPDATE Request SET status = @status, comment = @comment WHERE request_id = @requestID
 END
 
@@ -969,6 +983,29 @@ END
 
 GO
 
+CREATE OR ALTER PROC Procedures_ChooseInstructor (
+@student_id INT,
+@instructor_id INT,
+@course_id INT,
+@curr_sem_code VARCHAR(40)
+) AS
+BEGIN
+
+IF NOT EXISTS (SELECT * FROM Instructor_Course WHERE
+	instructor_id = @instructor_id AND course_id = @course_id)
+BEGIN
+	PRINT 'Instructor does not teach this course'
+	RETURN
+END
+UPDATE Student_Instructor_Course_Take
+SET Instructor_id = @instructor_id
+WHERE Student_id = @student_id
+AND course_id = @course_id
+AND semester_code = @curr_sem_code
+END
+
+GO
+
 CREATE OR ALTER PROC Procedures_StudentAddMobile(
 @studentID INT,
 @mobile_number VARCHAR(40)
@@ -977,6 +1014,41 @@ AS
 BEGIN
 INSERT INTO Student_Phone(student_id, phone_number)
 VALUES(@studentID, @mobile_number)
+END
+
+
+GO
+
+CREATE OR ALTER PROC Procedures_StudentRegisterFirstMakeup  (
+@StudentID INT,
+@CourseID INT,
+@studentCurrentSemester VARCHAR(40)
+)AS
+BEGIN
+	IF EXISTS( SELECT 1
+	FROM Student_Instructor_Course_Take sict
+	WHERE sict.student_id = @StudentID
+	AND course_id = @CourseID
+	AND semester_code = @studentCurrentSemester
+	AND sict.grade is NULL OR sict.grade IN( 'F',  'FF') 
+	)
+	BEGIN
+		IF NOT EXISTS (
+		SELECT 1
+		FROM Exam_Student ES
+		INNER JOIN MakeUp_Exam MUE ON ES.exam_id = MUE.exam_id
+		WHERE ES.student_id = @StudentID AND ES.course_id = @CourseID
+		)
+		BEGIN
+			DECLARE @examID int
+			SELECT TOP 1 @examID = exam_id
+			FROM MakeUp_Exam
+			WHERE course_id = @CourseID
+			ORDER BY date DESC
+			INSERT INTO Exam_Student (exam_id, student_id, course_id)
+			VALUES(@examID, @StudentID, @CourseID)
+		END
+	END
 END
 
 
@@ -994,12 +1066,12 @@ BEGIN
 	PRINT('Registration for second makeup failed because course is not offered in the current semester.')
 	RETURN
 END
-IF dbo.FN_StudentCheckSMEligibility(@courseID, @studentID) = 1
+IF dbo.FN_StudentCheckSMEligiability(@courseID, @studentID) = 1
 BEGIN
 	DECLARE @exam_id int
 	SELECT TOP 1 @exam_id = exam_id FROM 
 	MakeUp_Exam WHERE course_id = @courseID
-	AND type = 'Second_makeup'
+	AND type = 'Second MakeUp'
 	AND date > GETDATE()
 	ORDER BY date
 	IF @exam_id IS NULL
@@ -1032,8 +1104,8 @@ CREATE OR ALTER PROC Procedures_StudentRegistration(
 @student_id INT OUTPUT
 )
 AS
-INSERT INTO Student (f_name, l_name, password, faculty, email, major, semester)
-VALUES(@first_name, @last_name, @password, @faculty, @email, @major, @semester)
+INSERT INTO Student (f_name, l_name, password, faculty, email, major, semester, financial_status)
+VALUES(@first_name, @last_name, @password, @faculty, @email, @major, @semester, 1)
 
 SELECT @student_id = SCOPE_IDENTITY()
 
@@ -1087,23 +1159,21 @@ AS
 BEGIN
 SELECT c.course_id, c.course_name, c.credit_hours, c.is_offered, c.major, c.semester
 FROM Course c
-WHERE c.course_id NOT IN(
+INNER JOIN Student s 
+ON c.major = s.major
+WHERE s.student_id = @studentID AND c.course_id NOT IN(
 SELECT sict.course_id
 FROM Student_Instructor_Course_Take sict
 WHERE sict.student_id = @studentID 
-AND (sict.grade = 'F' OR sict.grade = 'FF' OR sict.grade = 'FA')
+AND (sict.grade IS NOT NULL AND sict.grade NOT IN ('F', 'FF', 'FA'))
 )
-AND c.course_id NOT IN(SELECT gc.course_id
-FROM GradPlan_Course gc
-INNER JOIN 
-Graduation_Plan gp ON gc.plan_id = gp.plan_id
-WHERE gp.student_id = @studentID)
+
 END
 
 
 GO
 
-CREATE OR ALTER PROC Procedures_ViewOptionalCourses(
+CREATE OR ALTER PROC Procedures_ViewOptionalCourse(
 @studentID INT,
 @currentSemesterCode VARCHAR(40)
 )
@@ -1116,6 +1186,7 @@ ON s.major = c.major
 INNER JOIN Course_Semester cs
 ON cs.course_id = c.course_id
 WHERE cs.semester_code = @currentSemesterCode
+AND s.student_id = @studentID
 AND c.semester >= s.semester
 AND c.course_id NOT IN(
 SELECT sict.course_id
@@ -1140,7 +1211,7 @@ INNER JOIN Course_Semester cs
 ON cs.course_id = c.course_id
 INNER JOIN Student s
 ON s.major = c.major
-WHERE cs.semester_code = @currentSemesterCode
+WHERE s.student_id = @studentID AND cs.semester_code = @currentSemesterCode
 AND c.semester < s.semester
 AND c.course_id NOT IN(
 SELECT sict.course_id

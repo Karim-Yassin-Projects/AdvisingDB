@@ -1,10 +1,11 @@
 #!/bin/bash
 
+db_name="Advising_Team_57"
 # Get the directory of the current script
 script_name="$(realpath "$0")"
 script_dir="$(dirname "$script_name")"
 # Define the output file
-outputFile="$script_dir/Advising_Team_57.sql"
+outputFile="$script_dir/$db_name.sql"
 
 echo $outputFile
 
@@ -12,9 +13,13 @@ echo $outputFile
 pushd "$script_dir/AdvisingDB"
 
 # Clear the output file if it already exists
-echo -n "CREATE DATABASE Advising_Team_57" > $outputFile
-echo -n -e "\n" >> $outputFile
-echo -n "USE Advising_Team_57" >> $outputFile
+echo -n -e "USE MASTER" > $outputFile
+echo -n -e "\n\nGO\n\n" >> $outputFile
+
+echo -n -e "IF EXISTS (SELECT * FROM sys.databases WHERE name = '$db_name')\n\tDROP DATABASE $db_name\n\nGO\n\n" >> $outputFile
+echo -n "CREATE DATABASE $db_name" >> $outputFile
+echo -n -e "\n\nGO\n\n" >> $outputFile
+echo -n "USE $db_name" >> $outputFile
 echo -n -e "\n\nGO\n\n" >> $outputFile
 
 # Concatenate the root files
@@ -24,6 +29,7 @@ do
     echo -n -e "\n\nGO\n\n" >> $outputFile
 done
 
+echo -n -e "EXECUTE CreateAllTables\n\nGO\n\n" >> $outputFile
 # Concatenate the files in the subfolders
 for folder in views fns procs
 do

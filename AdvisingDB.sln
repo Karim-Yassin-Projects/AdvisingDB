@@ -14,6 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{4749F300-1
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{E49E03BC-C2B0-4002-8101-06DEA000FE1B}"
 	ProjectSection(SolutionItems) = preProject
+		Advising_Team_57.sql = Advising_Team_57.sql
 		build.sh = build.sh
 	EndProjectSection
 EndProject
