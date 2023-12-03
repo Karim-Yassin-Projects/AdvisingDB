@@ -102,17 +102,17 @@
     <None Include="procs\Procedures_AdvisorViewPendingRequests.sql" />
     <None Include="fns\FN_StudentLogin.sql" />
     <None Include="procs\Procedures_StudentAddMobile.sql" />
-    <None Include="fns\FN_SemesterAvailableCourses.sql" />
+    <None Include="fns\FN_SemsterAvailableCourses.sql" />
     <None Include="procs\Procedures_StudentSendingCourseRequest.sql" />
     <None Include="procs\Procedures_StudentSendingCHRequest.sql" />
     <None Include="fns\FN_StudentViewGP.sql" />
     <None Include="fns\FN_StudentUpcoming_installment.sql" />
     <None Include="fns\FN_StudentViewSlot.sql" />
     <None Include="fns\FN_IsEvenSemesterCode.sql" />
-    <None Include="fns\FN_StudentCheckSMEligibility.sql" />
+    <None Include="fns\FN_StudentCheckSMEligibiality.sql" />
     <None Include="procs\Procedures_StudentRegisterSecondMakeup.sql" />
     <None Include="procs\Procedures_ViewRequiredCourses.sql" />
-    <None Include="procs\Procedures_ViewOptionalCourses.sql" />
+    <None Include="procs\Procedures_ViewOptionalCourse.sql" />
     <None Include="procs\Procedures_ViewMS.sql" />
     <None Include="DataPopulation.sql" />
     <None Include="test\createTables.sql" />
@@ -120,6 +120,11 @@
     <None Include="test\credit_hour_request.sql" />
     <None Include="test\test_views.sql" />
     <None Include="test\test_course_request.sql" />
+    <None Include="test\test_add_mobile.sql" />
+    <None Include="test\test_register_first_makeup.sql" />
+    <None Include="procs\Procedures_StudentRegisterFirstMakeup.sql" />
+    <None Include="test\test_second_makup.sql" />
+    <None Include="procs\Procedures_ChooseInstructor.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="fns\FN_CalculateStatus.sql" />

@@ -10,12 +10,12 @@ BEGIN
 	PRINT('Registration for second makeup failed because course is not offered in the current semester.')
 	RETURN
 END
-IF dbo.FN_StudentCheckSMEligibility(@courseID, @studentID) = 1
+IF dbo.FN_StudentCheckSMEligiability(@courseID, @studentID) = 1
 BEGIN
 	DECLARE @exam_id int
 	SELECT TOP 1 @exam_id = exam_id FROM 
 	MakeUp_Exam WHERE course_id = @courseID
-	AND type = 'Second_makeup'
+	AND type = 'Second MakeUp'
 	AND date > GETDATE()
 	ORDER BY date
 	IF @exam_id IS NULL

@@ -1,4 +1,4 @@
-﻿CREATE OR ALTER PROC Procedures_ViewOptionalCourses(
+﻿CREATE OR ALTER PROC Procedures_ViewOptionalCourse(
 @studentID INT,
 @currentSemesterCode VARCHAR(40)
 )
@@ -11,6 +11,7 @@ ON s.major = c.major
 INNER JOIN Course_Semester cs
 ON cs.course_id = c.course_id
 WHERE cs.semester_code = @currentSemesterCode
+AND s.student_id = @studentID
 AND c.semester >= s.semester
 AND c.course_id NOT IN(
 SELECT sict.course_id

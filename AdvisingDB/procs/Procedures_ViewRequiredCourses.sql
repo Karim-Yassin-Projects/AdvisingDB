@@ -10,7 +10,7 @@ INNER JOIN Course_Semester cs
 ON cs.course_id = c.course_id
 INNER JOIN Student s
 ON s.major = c.major
-WHERE cs.semester_code = @currentSemesterCode
+WHERE s.student_id = @studentID AND cs.semester_code = @currentSemesterCode
 AND c.semester < s.semester
 AND c.course_id NOT IN(
 SELECT sict.course_id

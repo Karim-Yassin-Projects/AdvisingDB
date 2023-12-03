@@ -22,7 +22,16 @@ SELECT dbo.FN_StudentUpcoming_installment(2)
 -- TEST HH
 SELECT * FROM dbo.FN_StudentViewSlot(2, 2)
 
+-- TEST JJ
+SELECT dbo.FN_StudentCheckSMEligiability(1,1)
+
+-- TEST LL
+EXECUTE Procedures_ViewRequiredCourses 1, 'W23'
+EXECUTE Procedures_ViewOptionalCourse 1, 'W23'
+
 SELECT * FROM  Course_Semester
+SELECT * FROM Course
+SELECT * FROM Instructor_Course
 
 SELECT * FROM Student WHERE advisor_id = 1
 
@@ -37,3 +46,4 @@ WHERE r.request_id = @requestID AND r.student_id = @studentID AND r.advisor_id =
 AND r.status = 'pending' AND r.type = 'Course'
 
 SELECT * FROM PreqCourse_course
+SELECT * FROM Student_Instructor_Course_Take

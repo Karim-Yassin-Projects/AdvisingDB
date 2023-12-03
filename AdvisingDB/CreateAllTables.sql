@@ -21,7 +21,7 @@ financial_status BIT NOT NULL,
 semester INT NOT NULL,
 acquired_hours INT,
 assigned_hours INT,
-advisor_id INT NOT NULL,
+advisor_id INT NULL,
 CONSTRAINT FK_Stud_Advisor FOREIGN KEY(advisor_id) REFERENCES Advisor(advisor_id)
 )
 
