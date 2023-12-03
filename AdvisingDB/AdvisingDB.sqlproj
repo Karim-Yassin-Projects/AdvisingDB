@@ -59,6 +59,7 @@
     <Folder Include="views" />
     <Folder Include="procs" />
     <Folder Include="fns" />
+    <Folder Include="test" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CreateAllTables.sql" />
@@ -114,6 +115,11 @@
     <None Include="procs\Procedures_ViewOptionalCourses.sql" />
     <None Include="procs\Procedures_ViewMS.sql" />
     <None Include="DataPopulation.sql" />
+    <None Include="test\createTables.sql" />
+    <None Include="test\truncate.sql" />
+    <None Include="test\credit_hour_request.sql" />
+    <None Include="test\test_views.sql" />
+    <None Include="test\test_course_request.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="fns\FN_CalculateStatus.sql" />

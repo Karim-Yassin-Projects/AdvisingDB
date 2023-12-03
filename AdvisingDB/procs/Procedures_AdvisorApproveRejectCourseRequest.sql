@@ -6,13 +6,15 @@ AS
 BEGIN
 DECLARE @courseID INT, @studentID INT, @status VARCHAR(40), @comment VARCHAR(40), @assignedHours INT, @semesterCode VARCHAR(40), @courseHours int, @advisorID INT
 
-SELECT @assignedHours = s.assigned_hours, @courseID = r.course_id, @courseHours = c.credit_hours
+SELECT @assignedHours = s.assigned_hours, 
+@courseID = r.course_id, @courseHours = c.credit_hours,
+@studentID = s.student_id, @advisorID = s.advisor_id
 FROM Student s
 INNER JOIN Request r
 ON r.student_id = s.student_id
 INNER JOIN Course c
 ON c.course_id = r.course_id
-WHERE r.request_id = @requestID AND r.student_id = @studentID AND r.advisor_id = @advisorID
+WHERE r.request_id = @requestID
 AND r.status = 'pending' AND r.type = 'Course'
 
 IF @assignedHours IS NULL
@@ -49,6 +51,7 @@ BEGIN
 		SELECT TOP 1 @courseID, 'Normal', NULL, ic.instructor_id, @semesterCode, @studentID
 		FROM Instructor_Course ic WHERE ic.course_id = @courseID
 END
-
+PRINT @status
+PRINT @comment
 UPDATE Request SET status = @status, comment = @comment WHERE request_id = @requestID
 END

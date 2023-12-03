@@ -15,8 +15,9 @@ WHERE r.request_id = @requestID
 AND r.status = 'pending' AND r.type = 'credit_hours'
 
 IF @studentId IS NULL
+BEGIN
 	RETURN
-
+END
 
 SELECT TOP 1 @semesterCode = s.semester_code
 FROM Semester s
@@ -63,4 +64,6 @@ BEGIN
 END
 
 UPDATE Request SET status = @status, comment = @comment WHERE request_id = @requestID
+PRINT @status
+PRINT @comment
 END

@@ -5,6 +5,9 @@
 @comment VARCHAR(40)
 ) AS
 BEGIN
+
+IF @type <> 'credit_hours'
+	RETURN
 DECLARE @advisor_id INT
 SELECT @advisor_id = advisor_id
 FROM Student s

@@ -1,0 +1,2 @@
+﻿EXECUTE DropAllTables
+EXECUTE CreateAllTables
