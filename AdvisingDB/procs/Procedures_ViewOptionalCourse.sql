@@ -17,6 +17,6 @@ AND c.course_id NOT IN(
 SELECT sict.course_id
 FROM Student_Instructor_Course_Take sict
 WHERE sict.student_id = @studentID 
-AND (sict.grade NOT IN('F', 'FF') OR dbo.FN_StudentCheckSMEligibility(c.course_id, @studentID) = 1)
+AND (sict.grade NOT IN('F', 'FF') OR dbo.FN_StudentCheckSMEligiability(c.course_id, @studentID) = 1)
 )
 END
