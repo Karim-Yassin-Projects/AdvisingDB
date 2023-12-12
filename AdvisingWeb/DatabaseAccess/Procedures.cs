@@ -12,6 +12,8 @@ namespace AdvisingWeb.DatabaseAccess
     {
         private static readonly string connectionString = ConfigurationManager.ConnectionStrings["AdvisingDB"].ConnectionString;
 
+       
+
         public static DataTable ViewOptionalCourses(int studentID, string currentSemesterCode)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))

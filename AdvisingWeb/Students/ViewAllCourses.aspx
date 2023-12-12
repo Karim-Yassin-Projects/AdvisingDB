@@ -5,7 +5,7 @@
         AutoGenerateColumns="false"
         ShowHeaderWhenEmpty="true" Width="100%" >
         <Columns>
-            <asp:BoundField HeaderText="Course Id" DataField="course_id" />
+            <asp:BoundField HeaderText="Course ID" DataField="course_id" />
             <asp:BoundField HeaderText="Course Name" DataField="course_name" />
             <asp:BoundField HeaderText="Credit Hours" DataField="credit_hours" />
             <asp:BoundField HeaderText="Is Offered" DataField="is_offered" />
@@ -20,7 +20,7 @@
         AutoGenerateColumns="false" 
         Width="100%">
         <Columns>
-            <asp:BoundField HeaderText="Course Id" DataField="course_id" />
+            <asp:BoundField HeaderText="Course ID" DataField="course_id" />
             <asp:BoundField HeaderText="Course Name" DataField="course_name" />
             <asp:BoundField HeaderText="Credit Hours" DataField="credit_hours" />
             <asp:TemplateField HeaderText="Is Offered">

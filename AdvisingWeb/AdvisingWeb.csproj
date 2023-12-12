@@ -180,7 +180,14 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="Students\AddingPhoneNumberPage.aspx" />
+    <Content Include="Students\LoginPage.aspx" />
+    <Content Include="Students\OptionalCoursesPage.aspx" />
+    <Content Include="Students\RegistrationPage.aspx" />
+    <Content Include="Students\RequiredCoursesPage.aspx" />
+    <Content Include="Students\StudentHomePage.aspx" />
     <Content Include="Students\ViewAllCourses.aspx" />
+    <Content Include="Students\ViewGradPlan.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -229,12 +236,61 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
+    <Compile Include="Students\AddingPhoneNumberPage.aspx.cs">
+      <DependentUpon>AddingPhoneNumberPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Students\AddingPhoneNumberPage.aspx.designer.cs">
+      <DependentUpon>AddingPhoneNumberPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Students\LoginPage.aspx.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Students\LoginPage.aspx.designer.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Students\OptionalCoursesPage.aspx.cs">
+      <DependentUpon>OptionalCoursesPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Students\OptionalCoursesPage.aspx.designer.cs">
+      <DependentUpon>OptionalCoursesPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Students\RegistrationPage.aspx.cs">
+      <DependentUpon>RegistrationPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Students\RegistrationPage.aspx.designer.cs">
+      <DependentUpon>RegistrationPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Students\RequiredCoursesPage.aspx.cs">
+      <DependentUpon>RequiredCoursesPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Students\RequiredCoursesPage.aspx.designer.cs">
+      <DependentUpon>RequiredCoursesPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Students\StudentHomePage.aspx.cs">
+      <DependentUpon>StudentHomePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Students\StudentHomePage.aspx.designer.cs">
+      <DependentUpon>StudentHomePage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Students\ViewAllCourses.aspx.cs">
       <DependentUpon>ViewAllCourses.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Students\ViewAllCourses.aspx.designer.cs">
       <DependentUpon>ViewAllCourses.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Students\ViewGradPlan.aspx.cs">
+      <DependentUpon>ViewGradPlan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Students\ViewGradPlan.aspx.designer.cs">
+      <DependentUpon>ViewGradPlan.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
