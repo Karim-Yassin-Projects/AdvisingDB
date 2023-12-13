@@ -1,0 +1,10 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Students.master.cs" Inherits="AdvisingWeb.Students.Students" MasterPageFile="~/Site.Master"%>
+<asp:Content runat="server" ContentPlaceHolderID="Menu">
+    <li class="nav-item"><a class="nav-link" runat="server" href="~/Students/StudentHomePage">Home</a></li>
+    <li class="nav-item"><a class="nav-link" runat="server" href="~/Students/OptionalCoursesPage">Optional Courses</a></li>
+    <li class="nav-item"><a class="nav-link" runat="server" href="~/Students/RequiredCoursesPage">Required Courses</a></li>
+    <asp:LinkButton CssClass="nav-link" runat="server" OnClick="LogOutClick">Log out</asp:LinkButton>
+</asp:Content>
+<asp:Content runat="server" ContentPlaceHolderID="MainContent">
+    <asp:ContentPlaceHolder runat="server" Id="MainContent" />
+</asp:Content>

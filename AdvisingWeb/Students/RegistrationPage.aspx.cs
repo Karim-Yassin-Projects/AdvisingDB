@@ -48,9 +48,12 @@ namespace AdvisingWeb.Students
 
                     SRegistrationProc.ExecuteNonQuery();
                     Response.Write("You have succesfully registered. Your Student ID is: " + Student_id.Value.ToString());
+                    Response.Redirect("LoginPage.aspx");
+
                 }
             }
 
         }
+
     }
 }

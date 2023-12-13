@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdvisingWeb.DatabaseAccess;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,15 +15,27 @@ namespace AdvisingWeb.Students
 
         }
 
-        protected void Register(object sender, EventArgs e)
+        protected void LoginClick(object sender, EventArgs e)
         {
-            Response.Redirect("RegistrationPage.aspx");
+            if (!int.TryParse(StudentID.Text, out int studentId))
+            {
+                InvalidLogin.Visible = true;
+                return;
+            }
+            bool success = Functions.StudentLogin(studentId, Password.Text);
+
+            if (success)
+            {
+                Session["StudentID"] = studentId;
+                Response.Redirect("~/Students/StudentHomePage");
+            }
+            else
+            {
+                InvalidLogin.Visible = true;
+            }
         }
 
-        protected void Redirect(object sender, EventArgs e)
-        {
-            Response.Redirect("StudentHomePage.aspx");
-        }
+        
 
     }
 }

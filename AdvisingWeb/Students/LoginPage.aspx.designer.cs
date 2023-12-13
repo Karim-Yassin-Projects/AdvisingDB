@@ -33,6 +33,15 @@ namespace AdvisingWeb.Students
         protected global::System.Web.UI.WebControls.TextBox Password;
 
         /// <summary>
+        /// InvalidLogin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label InvalidLogin;
+
+        /// <summary>
         /// Login control.
         /// </summary>
         /// <remarks>
@@ -40,14 +49,5 @@ namespace AdvisingWeb.Students
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Login;
-
-        /// <summary>
-        /// RegisterRedirect control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button RegisterRedirect;
     }
 }

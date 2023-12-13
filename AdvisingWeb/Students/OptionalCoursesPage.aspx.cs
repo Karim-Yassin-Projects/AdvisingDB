@@ -12,9 +12,14 @@ namespace AdvisingWeb.Students
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["StudentID"] == null)
+            {
+                Response.Redirect("~/Students/LoginPage");
+            }
+            var studentID = int.Parse("StudentID");
             if (!Page.IsCallback)
             {
-                gridOptionalCourses.DataSource = Procedures.ViewOptionalCourses(11, "S23");
+                gridOptionalCourses.DataSource = Procedures.ViewOptionalCourses(studentID, "S23");
                 gridOptionalCourses.DataBind();
             }
         }

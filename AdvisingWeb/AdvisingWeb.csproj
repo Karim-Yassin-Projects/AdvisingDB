@@ -210,6 +210,7 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseAccess\Functions.cs" />
     <Compile Include="DatabaseAccess\Procedures.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -278,6 +279,13 @@
     <Compile Include="Students\StudentHomePage.aspx.designer.cs">
       <DependentUpon>StudentHomePage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Students\Students.Master.cs">
+      <DependentUpon>Students.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Students\Students.Master.designer.cs">
+      <DependentUpon>Students.Master</DependentUpon>
+    </Compile>
     <Compile Include="Students\ViewAllCourses.aspx.cs">
       <DependentUpon>ViewAllCourses.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -309,6 +317,7 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Students\Students.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
