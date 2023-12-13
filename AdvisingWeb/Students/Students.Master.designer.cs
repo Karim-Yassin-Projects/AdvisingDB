@@ -15,6 +15,24 @@ namespace AdvisingWeb.Students
     {
 
         /// <summary>
+        /// StudentNameLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label StudentNameLabel;
+
+        /// <summary>
+        /// StudentIDLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label StudentIDLabel;
+
+        /// <summary>
         /// MainContent control.
         /// </summary>
         /// <remarks>

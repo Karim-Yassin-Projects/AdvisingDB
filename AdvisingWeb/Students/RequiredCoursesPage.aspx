@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Required Courses Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="RequiredCoursesPage.aspx.cs" Inherits="AdvisingWeb.Students.RequiredCoursesPage" %>
+﻿<%@ Page Title="Required Courses" Language="C#" MasterPageFile="~/Students/Students.Master" AutoEventWireup="true" CodeBehind="RequiredCoursesPage.aspx.cs" Inherits="AdvisingWeb.Students.RequiredCoursesPage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:GridView ID="gridRequiredCourses" runat="server" 
     ShowHeaderWhenEmpty="true"

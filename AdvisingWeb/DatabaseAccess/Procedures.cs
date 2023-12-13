@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using AdvisingWeb.Students;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
+using System.Xml.Linq;
 
 namespace AdvisingWeb.DatabaseAccess
 {
     public class Procedures
     {
         private static readonly string connectionString = ConfigurationManager.ConnectionStrings["AdvisingDB"].ConnectionString;
-
-       
 
         public static DataTable ViewOptionalCourses(int studentID, string currentSemesterCode)
         {
@@ -62,6 +58,34 @@ namespace AdvisingWeb.DatabaseAccess
 
                         return dt;
                     }
+                }
+            }
+        }
+
+        public static int RegisterStudent(StudentRegistration studentRegistration)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "Procedures_StudentRegistration";
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add(new SqlParameter("@first_name", studentRegistration.FirstName));
+                    command.Parameters.Add(new SqlParameter("@last_name", studentRegistration.LastName));
+                    command.Parameters.Add(new SqlParameter("@password", studentRegistration.Password));
+                    command.Parameters.Add(new SqlParameter("@faculty", studentRegistration.Faculty));
+                    command.Parameters.Add(new SqlParameter("@email", studentRegistration.Email));
+                    command.Parameters.Add(new SqlParameter("@major", studentRegistration.Major));
+                    command.Parameters.Add(new SqlParameter("@semester", studentRegistration.Semester));
+                    SqlParameter Student_id = command.Parameters.Add("@Student_id", SqlDbType.Int);
+                    Student_id.Direction = ParameterDirection.Output;
+                    command.ExecuteNonQuery();
+
+                    return (int)Student_id.Value;
                 }
             }
         }

@@ -16,7 +16,7 @@ namespace AdvisingWeb.Students
             {
                 Response.Redirect("~/Students/LoginPage");
             }
-            var studentID = int.Parse("StudentID");
+            var studentID = (int)Session["StudentID"];
             gridRequiredCourses.DataSource = Procedures.ViewRequiredCourses(studentID, "S23");
             gridRequiredCourses.DataBind();
         }

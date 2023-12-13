@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Configuration;
+using AdvisingWeb.DatabaseAccess;
 
 namespace AdvisingWeb.Students
 {
@@ -20,39 +21,27 @@ namespace AdvisingWeb.Students
         }
         protected void Register(object sender, EventArgs e)
         {
-
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            if (!Page.IsValid)
             {
-                conn.Open();
-                string fname = FirstName.Text;
-                string lname = LastName.Text;
-                string pass = Password.Text;
-                string faculty = Faculty.Text;
-                string email = Email.Text;
-                string major = Major.Text;
-                int sem = Int16.Parse(Semester.Text);
-
-                using (SqlCommand SRegistrationProc = new SqlCommand("Procedures_StudentRegistration", conn))
-                {
-                    SRegistrationProc.CommandType = CommandType.StoredProcedure;
-                    SRegistrationProc.Parameters.Add(new SqlParameter("@first_name", fname));
-                    SRegistrationProc.Parameters.Add(new SqlParameter("@last_name", lname));
-                    SRegistrationProc.Parameters.Add(new SqlParameter("@password", pass));
-                    SRegistrationProc.Parameters.Add(new SqlParameter("@faculty", faculty));
-                    SRegistrationProc.Parameters.Add(new SqlParameter("@email", email));
-                    SRegistrationProc.Parameters.Add(new SqlParameter("@major", major));
-                    SRegistrationProc.Parameters.Add(new SqlParameter("@semester", sem));
-
-                    SqlParameter Student_id = SRegistrationProc.Parameters.Add("@Student_id", SqlDbType.Int);
-                    Student_id.Direction = ParameterDirection.Output;
-
-                    SRegistrationProc.ExecuteNonQuery();
-                    Response.Write("You have succesfully registered. Your Student ID is: " + Student_id.Value.ToString());
-                    Response.Redirect("LoginPage.aspx");
-
-                }
+                return;
             }
 
+            var studentRegistration = new StudentRegistration
+            {
+                FirstName = FirstName.Text,
+                LastName = LastName.Text,
+                Email = Email.Text,
+                Password = Password.Text,
+                Faculty = Faculty.Text,
+                Major = Major.Text,
+                Semester = int.Parse(Semester.Text),
+            };
+
+            int studentId = Procedures.RegisterStudent(studentRegistration);
+            StudentIDLabel.Text = studentId.ToString();
+            FormPanel.Visible = false;
+            ResultPanel.Visible = true;
+            Session["StudentID"] = studentId;
         }
 
     }

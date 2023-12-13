@@ -15,6 +15,33 @@ namespace AdvisingWeb.Students
     {
 
         /// <summary>
+        /// ResultPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel ResultPanel;
+
+        /// <summary>
+        /// StudentIDLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label StudentIDLabel;
+
+        /// <summary>
+        /// FormPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel FormPanel;
+
+        /// <summary>
         /// FirstName control.
         /// </summary>
         /// <remarks>
@@ -42,6 +69,15 @@ namespace AdvisingWeb.Students
         protected global::System.Web.UI.WebControls.TextBox Password;
 
         /// <summary>
+        /// ConfirmPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ConfirmPassword;
+
+        /// <summary>
         /// Faculty control.
         /// </summary>
         /// <remarks>
@@ -51,15 +87,6 @@ namespace AdvisingWeb.Students
         protected global::System.Web.UI.WebControls.TextBox Faculty;
 
         /// <summary>
-        /// Email control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Email;
-
-        /// <summary>
         /// Major control.
         /// </summary>
         /// <remarks>
@@ -67,6 +94,15 @@ namespace AdvisingWeb.Students
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Major;
+
+        /// <summary>
+        /// Email control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Email;
 
         /// <summary>
         /// Semester control.

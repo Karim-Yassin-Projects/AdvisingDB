@@ -212,6 +212,8 @@
     </Compile>
     <Compile Include="DatabaseAccess\Functions.cs" />
     <Compile Include="DatabaseAccess\Procedures.cs" />
+    <Compile Include="DatabaseAccess\Queries.cs" />
+    <Compile Include="DatabaseAccess\StudentRegistration.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

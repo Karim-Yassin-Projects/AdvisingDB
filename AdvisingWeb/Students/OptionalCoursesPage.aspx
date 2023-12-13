@@ -1,6 +1,5 @@
-﻿<%@ Page Title="Optional Courses Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="OptionalCoursesPage.aspx.cs" Inherits="AdvisingWeb.Students.OptionalCoursesPage" %>
+﻿<%@ Page Title="Optional Courses" Language="C#" MasterPageFile="~/Students/Students.Master" AutoEventWireup="true" CodeBehind="OptionalCoursesPage.aspx.cs" Inherits="AdvisingWeb.Students.OptionalCoursesPage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h3>Optional Courses</h3>
 <asp:GridView ID="gridOptionalCourses" runat="server" 
     AutoGenerateColumns="false"
     ShowHeaderWhenEmpty="true" Width="100%" >
