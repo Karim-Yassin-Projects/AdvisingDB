@@ -1,1 +1,1 @@
-﻿EXECUTE ClearAllRecords
+﻿SELECT * FROM Course_Semester

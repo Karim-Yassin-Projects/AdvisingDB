@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Optional Courses" Language="C#" MasterPageFile="~/Students/Students.Master" AutoEventWireup="true" CodeBehind="OptionalCoursesPage.aspx.cs" Inherits="AdvisingWeb.Students.OptionalCoursesPage" %>
+﻿<%@ Page Title="Available Courses" Language="C#" MasterPageFile="~/Students/Students.Master" AutoEventWireup="true" CodeBehind="AvailableCoursesPage.aspx.cs" Inherits="AdvisingWeb.Students.AvailableCoursesPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="form-horizontal my-3">
@@ -9,20 +9,13 @@
             </div>
         </div>
     </div>
-    <asp:GridView ID="gridOptionalCourses" runat="server"
+    <asp:GridView ID="gridAvailableCourses" runat="server"
         AutoGenerateColumns="false" Visible="false"
         ShowHeaderWhenEmpty="true" Width="100%">
         <Columns>
             <asp:BoundField HeaderText="Course ID" DataField="course_id" />
             <asp:BoundField HeaderText="Course Name" DataField="course_name" />
-            <asp:BoundField HeaderText="Credit Hours" DataField="credit_hours" />
-            <asp:TemplateField HeaderText="Is Offered">
-                <ItemTemplate>
-                    <%# (bool)Eval("is_offered") ? "Yes" : "No" %>
-                </ItemTemplate>
-            </asp:TemplateField>
-            <asp:BoundField HeaderText="Major" DataField="major" />
-            <asp:BoundField HeaderText="Semester" DataField="semester" />
         </Columns>
     </asp:GridView>
 </asp:Content>
+

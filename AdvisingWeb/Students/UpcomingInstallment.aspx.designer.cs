@@ -11,25 +11,16 @@ namespace AdvisingWeb.Students
 {
 
 
-    public partial class OptionalCoursesPage
+    public partial class UpcomingInstallment
     {
 
         /// <summary>
-        /// SemesterCodes control.
+        /// InstallmentStatusLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList SemesterCodes;
-
-        /// <summary>
-        /// gridOptionalCourses control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridOptionalCourses;
+        protected global::System.Web.UI.WebControls.Label InstallmentStatusLabel;
     }
 }

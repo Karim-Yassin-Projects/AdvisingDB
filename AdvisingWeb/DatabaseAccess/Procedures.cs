@@ -89,5 +89,24 @@ namespace AdvisingWeb.DatabaseAccess
                 }
             }
         }
+
+        public static void AddMobileNumber(int studentID, string mobileNumber)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "Procedures_StudentaddMobile";
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add(new SqlParameter("@studentID", studentID));
+                    command.Parameters.Add(new SqlParameter("@mobile_number", mobileNumber));
+                    command.ExecuteNonQuery();
+
+                }
+            }
+        }
+
     }
 }

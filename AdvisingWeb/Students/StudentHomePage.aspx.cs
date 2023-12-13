@@ -7,14 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace AdvisingWeb.Students
 {
-    public partial class StudentHomePage : System.Web.UI.Page
+    public partial class StudentHomePage : StudentPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["StudentID"] == null)
-            {
-                Response.Redirect("~/Students/LoginPage");
-            }
+            
         }        
     }
 }

@@ -30,5 +30,70 @@ namespace AdvisingWeb.DatabaseAccess
                 }
             }
         }
+
+        public static DataTable ViewAvailableCourses(string currentSemesterCode)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "SELECT * FROM dbo.FN_SemsterAvailableCourses(@semester_code)";
+                    command.CommandType = CommandType.Text;
+                    command.Parameters.AddWithValue("@semester_code", currentSemesterCode);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+
+                        DataTable dt = new DataTable();
+                        dt.Load(reader);
+
+                        return dt;
+                    }
+                }
+            }
+        }
+
+        public static DataTable ViewGradPlan(int studentId)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "SELECT * FROM dbo.FN_StudentViewGP(@studentID)";
+                    command.CommandType = CommandType.Text;
+                    command.Parameters.AddWithValue("@studentID", studentId);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+
+                        DataTable dt = new DataTable();
+                        dt.Load(reader);
+
+                        return dt;
+                    }
+                }
+            }
+        }
+
+        public static DateTime? ViewUpcomingInstallment(int studentId)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "SELECT dbo.FN_StudentUpcoming_Installment(@student_id)";
+                    command.CommandType = CommandType.Text;
+                    command.Parameters.AddWithValue("@student_id", studentId);
+                    var result = command.ExecuteScalar();
+                    return result is DateTime ? (DateTime?)result : null;
+                }
+            }
+        }
     }
 }

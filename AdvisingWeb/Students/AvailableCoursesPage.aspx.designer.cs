@@ -11,25 +11,25 @@ namespace AdvisingWeb.Students
 {
 
 
-    public partial class ViewAllCourses
+    public partial class AvailableCoursesPage
     {
 
         /// <summary>
-        /// gridOptionalCourses control.
+        /// SemesterCodes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridOptionalCourses;
+        protected global::System.Web.UI.WebControls.DropDownList SemesterCodes;
 
         /// <summary>
-        /// gridRequiredCourses control.
+        /// gridAvailableCourses control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridRequiredCourses;
+        protected global::System.Web.UI.WebControls.GridView gridAvailableCourses;
     }
 }
