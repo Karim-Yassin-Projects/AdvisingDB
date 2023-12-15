@@ -1,8 +1,10 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Admins.master.cs" Inherits="AdvisingWeb.Admins.Admins" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Menu" runat="server">
-    <asp:Content runat="server" ContentPlaceHolderID="Menu">
     <li class="nav-item"><a class="nav-link" runat="server" href="~/Admins/AdminHomePage">Home</a></li>
     <li class="nav-item nav-link">Welcome Adminstrator</li>
     <li class="nav-item nav-link">Your admin ID: 1</li>
     <asp:LinkButton CssClass="nav-link" CausesValidation="false" runat="server" OnClick="LogOutClick">Log out</asp:LinkButton>
+</asp:Content>
+<asp:Content runat="server" ContentPlaceHolderID="MainContent">
+    <asp:ContentPlaceHolder runat="server" Id="MainContent" />
 </asp:Content>

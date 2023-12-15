@@ -12,7 +12,7 @@ namespace AdvisingWeb.Scripts.Admins
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            gridStudentsandAdvisors.DataSource = Procedures.ListAdvisors();
+            gridStudentsandAdvisors.DataSource = Procedures.ListStudentsWithAdvisors();
             gridStudentsandAdvisors.DataBind();
             gridStudentsandAdvisors.Visible = true;
         }

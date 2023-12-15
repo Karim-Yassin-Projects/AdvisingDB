@@ -219,7 +219,7 @@ namespace AdvisingWeb.DatabaseAccess
             }
         }
 
-        public static DataTable ListStudentswithAdvisors()
+        public static DataTable ListStudentsWithAdvisors()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
