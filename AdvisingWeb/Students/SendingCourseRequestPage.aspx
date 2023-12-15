@@ -15,7 +15,7 @@
     <asp:Panel runat="server" ID="FormPanel">
         <div class="form-horizontal">
             <div class="form-group row my-2">
-                <label class="form-label col-md-2 text-md-end" for="courseID">Course ID: :</label>
+                <label class="form-label col-md-2 text-md-end" for="courseID">Course:</label>
                 <div class="col-md-10">
                     <asp:DropDownList ID="courseID" runat="server" CssClass="form-control" DataTextField="Text" DataValueField="Value" />
                     <asp:RequiredFieldValidator Display="Dynamic" runat="server" ControlToValidate="courseID" Text="Please select a course." CssClass="text-danger" />

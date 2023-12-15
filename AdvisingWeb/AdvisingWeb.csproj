@@ -182,6 +182,7 @@
     <Content Include="Site.Master" />
     <Content Include="Students\AddingPhoneNumberPage.aspx" />
     <Content Include="Students\AvailableCoursesPage.aspx" />
+    <Content Include="Students\ChooseInstructorPage.aspx" />
     <Content Include="Students\FirstMakeupRegistration.aspx" />
     <Content Include="Students\LoginPage.aspx" />
     <Content Include="Students\MissingCoursesPage.aspx" />
@@ -259,6 +260,13 @@
     </Compile>
     <Compile Include="Students\AvailableCoursesPage.aspx.designer.cs">
       <DependentUpon>AvailableCoursesPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Students\ChooseInstructorPage.aspx.cs">
+      <DependentUpon>ChooseInstructorPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Students\ChooseInstructorPage.aspx.designer.cs">
+      <DependentUpon>ChooseInstructorPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Students\FirstMakeupRegistration.aspx.cs">
       <DependentUpon>FirstMakeupRegistration.aspx</DependentUpon>

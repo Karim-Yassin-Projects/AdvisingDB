@@ -107,5 +107,69 @@ namespace AdvisingWeb.DatabaseAccess
                 }
             }
         }
+
+        public static DataTable GetCurrentCourses(int studentID)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText =
+                        @"SELECT sict.course_id, sict.semester_code, c.course_name, sict.instructor_id, i.instructor_name
+                          FROM Student_Instructor_Course_Take sict
+                          INNER JOIN Course c ON c.course_id = sict.course_id
+                          INNER JOIN Instructor i ON sict.instructor_id = i.instructor_id
+                          WHERE sict.student_id=@studentID
+                          AND sict.grade IS NULL";
+                    command.CommandType = CommandType.Text;
+
+                    command.Parameters.AddWithValue("@studentID", studentID);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        var dataTable = new DataTable();
+                        dataTable.Load(reader);
+                        return dataTable;
+                    }
+                }
+            }
+        }
+
+        public static List<ListItem> GetCourseInstructors(int courseID, int instructorId)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText =
+                        @"SELECT ic.instructor_id, i.instructor_name
+                        FROM Instructor_Course ic 
+                        INNER JOIN Instructor i ON ic.instructor_id = i.instructor_id
+                        WHERE ic.course_id = @courseId AND ic.instructor_id <> @instructorId
+                        ";
+                    command.CommandType = CommandType.Text;
+
+                    command.Parameters.AddWithValue("@courseId", courseID);
+                    command.Parameters.AddWithValue("@instructorId", instructorId);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        var list = new List<ListItem>
+                        {
+                            new ListItem("--Please select new instructor--", "")
+                        };
+                        while (reader.Read())
+                        {
+                            list.Add(new ListItem(reader.GetString(1), reader.GetInt32(0).ToString()));
+                        }
+                        return list;
+                    }
+                }
+            }
+        }
     }
 }

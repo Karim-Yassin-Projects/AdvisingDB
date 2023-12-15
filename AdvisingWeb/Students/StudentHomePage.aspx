@@ -24,6 +24,7 @@
         <div class="col-6 col-md-3 col-xl-2"><asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/MissingCoursesPage">View Missing Courses</asp:HyperLink></div>
         <div class="col-6 col-md-3 col-xl-2"><asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/SendingCourseRequestPage">Send Course Request</asp:HyperLink></div>
         <div class="col-6 col-md-3 col-xl-2"><asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/SendingCHRequestPage">Send Credit Hour Request</asp:HyperLink></div>
+        <div class="col-6 col-md-3 col-xl-2"><asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/ChooseInstructorPage">Change Course Instructor</asp:HyperLink></div>
     </div>
 
 </asp:Content>

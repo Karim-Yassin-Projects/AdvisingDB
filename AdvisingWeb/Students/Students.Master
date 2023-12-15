@@ -3,7 +3,7 @@
     <li class="nav-item"><a class="nav-link" runat="server" href="~/Students/StudentHomePage">Home</a></li>
     <li class="nav-item nav-link">Welcome <asp:Label runat="server" ID="StudentNameLabel" /></li>
     <li class="nav-item nav-link">Your student ID:<asp:Label runat="server" ID="StudentIDLabel" /></li>
-    <asp:LinkButton CssClass="nav-link" runat="server" OnClick="LogOutClick">Log out</asp:LinkButton>
+    <asp:LinkButton CssClass="nav-link" CausesValidation="false" runat="server" OnClick="LogOutClick">Log out</asp:LinkButton>
 </asp:Content>
 <asp:Content runat="server" ContentPlaceHolderID="MainContent">
     <asp:ContentPlaceHolder runat="server" Id="MainContent" />

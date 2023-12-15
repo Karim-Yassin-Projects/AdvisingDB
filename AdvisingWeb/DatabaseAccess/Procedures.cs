@@ -176,5 +176,24 @@ namespace AdvisingWeb.DatabaseAccess
             }
         }
 
+        public static void ChooseInstructor(int studentID, int courseId, int instructorId, string semesterCode)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "Procedures_ChooseInstructor";
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add(new SqlParameter("@student_id", studentID));
+                    command.Parameters.Add(new SqlParameter("@instructor_id", instructorId));
+                    command.Parameters.Add(new SqlParameter("@course_id", courseId));
+                    command.Parameters.Add(new SqlParameter("@curr_sem_code", semesterCode));
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
     }
 }
