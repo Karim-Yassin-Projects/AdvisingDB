@@ -182,12 +182,17 @@
     <Content Include="Site.Master" />
     <Content Include="Students\AddingPhoneNumberPage.aspx" />
     <Content Include="Students\AvailableCoursesPage.aspx" />
+    <Content Include="Students\FirstMakeupRegistration.aspx" />
     <Content Include="Students\LoginPage.aspx" />
+    <Content Include="Students\MissingCoursesPage.aspx" />
     <Content Include="Students\OptionalCoursesPage.aspx" />
     <Content Include="Students\RegistrationPage.aspx" />
     <Content Include="Students\RequiredCoursesPage.aspx" />
+    <Content Include="Students\SendingCHRequestPage.aspx" />
+    <Content Include="Students\SendingCourseRequestPage.aspx" />
     <Content Include="Students\StudentHomePage.aspx" />
     <Content Include="Students\UpcomingInstallment.aspx" />
+    <Content Include="Students\ViewCoursesandExams.aspx" />
     <Content Include="Students\ViewGradPlan.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -215,6 +220,7 @@
     <Compile Include="DatabaseAccess\Procedures.cs" />
     <Compile Include="DatabaseAccess\Queries.cs" />
     <Compile Include="DatabaseAccess\StudentRegistration.cs" />
+    <Compile Include="DatabaseAccess\Views.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -254,12 +260,26 @@
     <Compile Include="Students\AvailableCoursesPage.aspx.designer.cs">
       <DependentUpon>AvailableCoursesPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Students\FirstMakeupRegistration.aspx.cs">
+      <DependentUpon>FirstMakeupRegistration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Students\FirstMakeupRegistration.aspx.designer.cs">
+      <DependentUpon>FirstMakeupRegistration.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Students\LoginPage.aspx.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Students\LoginPage.aspx.designer.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Students\MissingCoursesPage.aspx.cs">
+      <DependentUpon>MissingCoursesPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Students\MissingCoursesPage.aspx.designer.cs">
+      <DependentUpon>MissingCoursesPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Students\OptionalCoursesPage.aspx.cs">
       <DependentUpon>OptionalCoursesPage.aspx</DependentUpon>
@@ -281,6 +301,20 @@
     </Compile>
     <Compile Include="Students\RequiredCoursesPage.aspx.designer.cs">
       <DependentUpon>RequiredCoursesPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Students\SendingCHRequestPage.aspx.cs">
+      <DependentUpon>SendingCHRequestPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Students\SendingCHRequestPage.aspx.designer.cs">
+      <DependentUpon>SendingCHRequestPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Students\SendingCourseRequestPage.aspx.cs">
+      <DependentUpon>SendingCourseRequestPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Students\SendingCourseRequestPage.aspx.designer.cs">
+      <DependentUpon>SendingCourseRequestPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Students\StudentHomePage.aspx.cs">
       <DependentUpon>StudentHomePage.aspx</DependentUpon>
@@ -306,6 +340,13 @@
     <Compile Include="Students\UpcomingInstallment.aspx.designer.cs">
       <DependentUpon>UpcomingInstallment.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Students\ViewCoursesandExams.aspx.cs">
+      <DependentUpon>ViewCoursesandExams.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Students\ViewCoursesandExams.aspx.designer.cs">
+      <DependentUpon>ViewCoursesandExams.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Students\ViewGradPlan.aspx.cs">
       <DependentUpon>ViewGradPlan.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -325,6 +366,7 @@
     <Folder Include="Admin\" />
     <Folder Include="Advisor\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\Admins\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

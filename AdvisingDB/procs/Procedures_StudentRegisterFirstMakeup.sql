@@ -9,7 +9,7 @@ BEGIN
 	WHERE sict.student_id = @StudentID
 	AND course_id = @CourseID
 	AND semester_code = @studentCurrentSemester
-	AND sict.grade is NULL OR sict.grade IN( 'F',  'FF') 
+	AND sict.grade is NULL OR sict.grade IN('F',  'FF') 
 	)
 	BEGIN
 		IF NOT EXISTS (

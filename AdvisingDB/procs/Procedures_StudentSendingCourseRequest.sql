@@ -13,3 +13,4 @@ SELECT @advisorID = advisor_id FROM Student WHERE student_id = @studentID
 INSERT INTO Request(type, comment, status, credit_hours, student_id, advisor_id, course_id)
 VALUES(@type, @comment, 'pending', @creditHours, @studentID, @advisorID, @courseID)
 END
+

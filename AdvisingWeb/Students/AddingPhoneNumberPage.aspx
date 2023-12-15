@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddingPhoneNumberPage.aspx.cs" Inherits="AdvisingWeb.Students.AddingPhoneNumberPage" %>
+﻿<%@ Page Title="Adding Phone Number" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddingPhoneNumberPage.aspx.cs" Inherits="AdvisingWeb.Students.AddingPhoneNumberPage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 <asp:Panel runat="server" ID="ResultPanel" Visible="false">
     <div class="alert alert-info">

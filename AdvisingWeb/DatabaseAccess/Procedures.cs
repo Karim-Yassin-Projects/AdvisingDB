@@ -62,6 +62,32 @@ namespace AdvisingWeb.DatabaseAccess
             }
         }
 
+        public static DataTable MissingCourses(int studentID)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "Procedures_ViewMS";
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("@studentID", studentID);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+
+                        DataTable dt = new DataTable();
+                        dt.Load(reader);
+
+                        return dt;
+                    }
+                }
+            }
+
+        }
+
         public static int RegisterStudent(StudentRegistration studentRegistration)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -102,6 +128,48 @@ namespace AdvisingWeb.DatabaseAccess
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.Add(new SqlParameter("@studentID", studentID));
                     command.Parameters.Add(new SqlParameter("@mobile_number", mobileNumber));
+                    command.ExecuteNonQuery();
+
+                }
+            }
+        }
+
+        public static void SendingCourseRequest(int studentID, int courseID, string type, string comment)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "Procedures_StudentSendingCourseRequest";
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add(new SqlParameter("@studentID", studentID));
+                    command.Parameters.Add(new SqlParameter("@courseID", courseID));
+                    command.Parameters.Add(new SqlParameter("@type", type));
+                    command.Parameters.Add(new SqlParameter("@comment", comment));
+
+                    command.ExecuteNonQuery();
+
+                }
+            }
+        }
+
+        public static void SendingCHRequest(int studentID, int creditHours, string type, string comment)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "Procedures_StudentSendingCHRequest";
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add(new SqlParameter("@student_id", studentID));
+                    command.Parameters.Add(new SqlParameter("@credit_hours", creditHours));
+                    command.Parameters.Add(new SqlParameter("@type", type));
+                    command.Parameters.Add(new SqlParameter("@comment", comment));
+
                     command.ExecuteNonQuery();
 
                 }
