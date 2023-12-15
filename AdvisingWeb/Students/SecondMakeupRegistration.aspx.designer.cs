@@ -11,7 +11,7 @@ namespace AdvisingWeb.Students
 {
 
 
-    public partial class FirstMakeupRegistration
+    public partial class SecondMakeupRegistration
     {
 
         /// <summary>
@@ -33,22 +33,22 @@ namespace AdvisingWeb.Students
         protected global::System.Web.UI.WebControls.DropDownList SemesterCodes;
 
         /// <summary>
-        /// Success control.
+        /// ResultPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder Success;
+        protected global::System.Web.UI.WebControls.Panel ResultPanel;
 
         /// <summary>
-        /// Failure control.
+        /// ResultText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder Failure;
+        protected global::System.Web.UI.WebControls.Label ResultText;
 
         /// <summary>
         /// CourseSelectionPanel control.

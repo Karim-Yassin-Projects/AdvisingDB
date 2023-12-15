@@ -1,4 +1,4 @@
-﻿<%@ Page Title="First Makeup Reqistration" Language="C#" MasterPageFile="~/Students/Students.Master" AutoEventWireup="true" CodeBehind="FirstMakeupRegistration.aspx.cs" Inherits="AdvisingWeb.Students.FirstMakeupRegistration" %>
+﻿<%@ Page Title="Second Makeup Registration" Language="C#" MasterPageFile="~/Students/Students.Master" AutoEventWireup="true" CodeBehind="SecondMakeupRegistration.aspx.cs" Inherits="AdvisingWeb.Students.SecondMakeupRegistration" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="form-horizontal">
@@ -13,20 +13,11 @@
                 </div>
             </div>
         </asp:PlaceHolder>
-        <asp:PlaceHolder runat="server" Visible="false" ID="Success">
+        <asp:Panel runat="server" Visible="false" ID="ResultPanel" >
             <div class="form-group row my-2">
-                <div class="alert alert-info">
-                    Registration for first makeup was successful.
-                </div>
+                <asp:Label ID="ResultText" runat="server" />
             </div>
-        </asp:PlaceHolder>
-        <asp:PlaceHolder runat="server" Visible="false" ID="Failure">
-            <div class="form-group row my-2">
-                <div class="alert alert-danger">
-                    Can't register for first makeup.
-                </div>
-            </div>
-        </asp:PlaceHolder>
+        </asp:Panel>
         <asp:PlaceHolder runat="server" ID="CourseSelectionPanel">
             <div class="form-horizontal my-3">
                 <div class="row">

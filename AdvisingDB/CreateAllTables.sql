@@ -1,5 +1,10 @@
 ﻿CREATE OR ALTER PROC CreateAllTables AS
 
+CREATE TABLE Admins(
+admin_id INT PRIMARY KEY,
+password VARCHAR(40)
+)
+
 CREATE TABLE Advisor(
 advisor_id INT PRIMARY KEY IDENTITY,
 advisor_name VARCHAR(40) NOT NULL,

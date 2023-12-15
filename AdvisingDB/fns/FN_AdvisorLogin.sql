@@ -10,3 +10,6 @@ IF  EXISTS (SELECT 1 FROM Advisor WHERE advisor_id = @id AND password = @passwor
 	SET @success = 1
 RETURN @success
 END
+
+GO
+

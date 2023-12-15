@@ -7,6 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
+using System.Net;
 
 namespace AdvisingWeb.DatabaseAccess
 {
@@ -137,6 +138,35 @@ namespace AdvisingWeb.DatabaseAccess
             }
         }
 
+        public static DataTable GetCurrentCoursesBySemesterCode(int studentID, string semesterCode)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText =
+                        @"SELECT sict.course_id, c.course_name
+                          FROM Student_Instructor_Course_Take sict
+                          INNER JOIN Course c ON c.course_id = sict.course_id
+                          WHERE sict.student_id=@studentID
+                          AND sict.semester_code = @semesterCode";
+                    command.CommandType = CommandType.Text;
+
+                    command.Parameters.AddWithValue("@studentID", studentID);
+                    command.Parameters.AddWithValue("@semesterCode", semesterCode);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        var dataTable = new DataTable();
+                        dataTable.Load(reader);
+                        return dataTable;
+                    }
+                }
+            }
+        }
+
         public static List<ListItem> GetCourseInstructors(int courseID, int instructorId)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -171,5 +201,40 @@ namespace AdvisingWeb.DatabaseAccess
                 }
             }
         }
+
+        public static List<ListItem> GetCourseInstructors(int courseID)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText =
+                        @"SELECT ic.instructor_id, i.instructor_name
+                        FROM Instructor_Course ic 
+                        INNER JOIN Instructor i ON ic.instructor_id = i.instructor_id
+                        WHERE ic.course_id = @courseId
+                        ";
+                    command.CommandType = CommandType.Text;
+
+                    command.Parameters.AddWithValue("@courseId", courseID);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        var list = new List<ListItem>
+                        {
+                            new ListItem("--Please select new instructor--", "")
+                        };
+                        while (reader.Read())
+                        {
+                            list.Add(new ListItem(reader.GetString(1), reader.GetInt32(0).ToString()));
+                        }
+                        return list;
+                    }
+                }
+            }
+        }
+
     }
 }

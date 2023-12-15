@@ -11,44 +11,17 @@ namespace AdvisingWeb.Students
 {
 
 
-    public partial class FirstMakeupRegistration
+    public partial class SlotsInstructor
     {
 
         /// <summary>
-        /// SemesterCodesPanel control.
+        /// NoAvailableInstructors control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder SemesterCodesPanel;
-
-        /// <summary>
-        /// SemesterCodes control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList SemesterCodes;
-
-        /// <summary>
-        /// Success control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder Success;
-
-        /// <summary>
-        /// Failure control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder Failure;
+        protected global::System.Web.UI.WebControls.PlaceHolder NoAvailableInstructors;
 
         /// <summary>
         /// CourseSelectionPanel control.
@@ -69,12 +42,30 @@ namespace AdvisingWeb.Students
         protected global::System.Web.UI.WebControls.DropDownList CourseID;
 
         /// <summary>
-        /// RegisterButton control.
+        /// InstructorChoicePanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button RegisterButton;
+        protected global::System.Web.UI.WebControls.PlaceHolder InstructorChoicePanel;
+
+        /// <summary>
+        /// InstructorId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList InstructorId;
+
+        /// <summary>
+        /// gridSlotsInstructor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridSlotsInstructor;
     }
 }

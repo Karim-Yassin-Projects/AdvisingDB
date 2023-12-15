@@ -34,5 +34,74 @@ namespace AdvisingWeb.DatabaseAccess
                 }
             }
         }
+
+        public static DataTable ViewPendingRequests()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "SELECT * FROM all_Pending_Requests";
+                    command.CommandType = CommandType.Text;
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+
+                        DataTable dt = new DataTable();
+                        dt.Load(reader);
+
+                        return dt;
+                    }
+
+                }
+            }
+        }
+
+        public static DataTable ViewPrerequisites()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "SELECT * FROM view_Course_prerequisites";
+                    command.CommandType = CommandType.Text;
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+
+                        DataTable dt = new DataTable();
+                        dt.Load(reader);
+
+                        return dt;
+                    }
+
+                }
+            }
+        }
+
+        public static DataTable ViewSlotsCoursesInstructor()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "SELECT * FROM Courses_Slots_Instructor";
+                    command.CommandType = CommandType.Text;
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+
+                        DataTable dt = new DataTable();
+                        dt.Load(reader);
+
+                        return dt;
+                    }
+
+                }
+            }
+        }
     }
 }

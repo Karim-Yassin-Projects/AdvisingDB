@@ -16,7 +16,6 @@
             <div class="form-group row my-2">
                 <div class="alert alert-info">
                     Instructor was changed successfully.
-
                 </div>
             </div>
         </asp:PlaceHolder>

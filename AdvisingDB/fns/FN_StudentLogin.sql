@@ -10,3 +10,6 @@ IF  EXISTS (SELECT 1 FROM Student s WHERE s.student_id = @id AND s.password = @p
 SET @success = 1
 RETURN @success
 END
+
+go
+

@@ -11,7 +11,7 @@
             <section class="col-12" aria-labelledby="gettingStartedTitle">
                 <asp:HyperLink CssClass="btn btn-outline-primary p-5 m-2" runat="server" NavigateUrl="~/Students/LoginPage">Student Portal</asp:HyperLink>
                 <asp:HyperLink CssClass="btn btn-outline-primary p-5 m-2" runat="server" NavigateUrl="~/Advisors/LoginPage">Advisor Portal</asp:HyperLink>
-                <asp:HyperLink CssClass="btn btn-outline-primary p-5 m-2" runat="server" NavigateUrl="~/Admin/LoginPage">Admin Portal</asp:HyperLink>
+                <asp:HyperLink CssClass="btn btn-outline-primary p-5 m-2" runat="server" NavigateUrl="~/Admins/AdminLogin">Admin Portal</asp:HyperLink>
             </section>
         </div>
     </main>

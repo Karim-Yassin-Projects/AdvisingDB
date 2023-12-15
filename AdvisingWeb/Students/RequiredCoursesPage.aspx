@@ -12,6 +12,7 @@
     </div>
     <asp:GridView ID="gridRequiredCourses" runat="server"
         ShowHeaderWhenEmpty="true" Visible="false"
+        CssClass="table table-striped"
         AutoGenerateColumns="false"
         Width="100%">
         <Columns>

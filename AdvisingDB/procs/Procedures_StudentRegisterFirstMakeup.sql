@@ -10,6 +10,7 @@ BEGIN
 	AND course_id = @CourseID
 	AND semester_code = @studentCurrentSemester
 	AND sict.grade is NULL OR sict.grade IN('F',  'FF') 
+	AND sict.exam_type = 'Normal'
 	)
 	BEGIN
 		IF NOT EXISTS (
@@ -24,8 +25,17 @@ BEGIN
 			FROM MakeUp_Exam
 			WHERE course_id = @CourseID
 			ORDER BY date DESC
+			
 			INSERT INTO Exam_Student (exam_id, student_id, course_id)
 			VALUES(@examID, @StudentID, @CourseID)
+			UPDATE Student_Instructor_Course_Take
+			SET exam_type = 'First_makeup', grade = NULL
+			WHERE course_id = @CourseID AND student_id = @StudentID
+			AND semester_code = @studentCurrentSemester
+
+			SELECT @@ROWCOUNT
+			RETURN
 		END
 	END
+	SELECT 0
 END

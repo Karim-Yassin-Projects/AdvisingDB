@@ -10,6 +10,7 @@
         </div>
     </div>
     <asp:GridView ID="gridOptionalCourses" runat="server"
+        CssClass="table table-striped"
         AutoGenerateColumns="false" Visible="false"
         ShowHeaderWhenEmpty="true" Width="100%">
         <Columns>

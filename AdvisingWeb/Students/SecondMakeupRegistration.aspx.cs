@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace AdvisingWeb.Students
 {
-    public partial class FirstMakeupRegistration : StudentPage
+    public partial class SecondMakeupRegistration : StudentPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -49,12 +49,12 @@ namespace AdvisingWeb.Students
             }
             var courseId = int.Parse(CourseID.SelectedValue);
             var semesterCode = SemesterCodes.SelectedValue;
-
-            var result = Procedures.RegisterForFirstMakeup(StudentID, courseId, semesterCode);
             CourseSelectionPanel.Visible = false;
             SemesterCodesPanel.Visible = false;
-            Success.Visible = result;
-            Failure.Visible = !result;
+            var (message,result) = Procedures.RegisterForSecondMakeup(StudentID, courseId, semesterCode);
+            ResultPanel.Visible = true;
+            ResultText.Text = message;
+            ResultPanel.CssClass = result ? "alert alert-info" : "alert alert-danger";
         }
     }
 }

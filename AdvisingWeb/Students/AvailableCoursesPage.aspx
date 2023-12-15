@@ -11,6 +11,7 @@
     </div>
     <asp:GridView ID="gridAvailableCourses" runat="server"
         AutoGenerateColumns="false" Visible="false"
+        CssClass="table table-striped"
         ShowHeaderWhenEmpty="true" Width="100%">
         <Columns>
             <asp:BoundField HeaderText="Course ID" DataField="course_id" />

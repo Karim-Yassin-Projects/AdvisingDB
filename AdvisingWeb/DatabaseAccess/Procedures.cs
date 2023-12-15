@@ -1,4 +1,5 @@
 ﻿using AdvisingWeb.Students;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -191,6 +192,99 @@ namespace AdvisingWeb.DatabaseAccess
                     command.Parameters.Add(new SqlParameter("@course_id", courseId));
                     command.Parameters.Add(new SqlParameter("@curr_sem_code", semesterCode));
                     command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static DataTable ListAdvisors()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "Procedures_AdminListAdvisors";
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+
+                        DataTable dt = new DataTable();
+                        dt.Load(reader);
+
+                        return dt;
+                    }
+                }
+            }
+        }
+
+        public static DataTable ListStudentswithAdvisors()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "AdminListStudentsWithAdvisors";
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+
+                        DataTable dt = new DataTable();
+                        dt.Load(reader);
+
+                        return dt;
+                    }
+                }
+            }
+        }
+
+        public static bool RegisterForFirstMakeup(int studentId, int courseId, string semesterCode)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "Procedures_StudentRegisterFirstMakeup";
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@StudentID", studentId);
+                    command.Parameters.AddWithValue("@CourseID", courseId);
+                    command.Parameters.AddWithValue("@studentCurrentSemester", semesterCode);
+
+                    return (int)command.ExecuteScalar() != 0;
+                }
+            }
+        }
+
+        public static (string message, bool success) RegisterForSecondMakeup(int studentId, int courseId, string semesterCode)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "Procedures_StudentRegisterSecondMakeup";
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@StudentID", studentId);
+                    command.Parameters.AddWithValue("@CourseID", courseId);
+                    command.Parameters.AddWithValue("@studentCurrentSemester", semesterCode);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return (reader.GetString(0), reader.GetBoolean(1));
+                        }
+
+                        return ("Failed to register for second makeup", false);
+                    }
+
                 }
             }
         }

@@ -2,6 +2,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:GridView ID="gridViewCoursesAndExams" runat="server"
     AutoGenerateColumns="false"
+        CssClass="table table-striped"
     ShowHeaderWhenEmpty="true" Width="100%">
     <Columns>
         <asp:BoundField HeaderText="Course Name" DataField="course_name"/>

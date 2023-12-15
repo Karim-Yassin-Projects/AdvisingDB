@@ -21,9 +21,30 @@ namespace AdvisingWeb.Students
 
         protected void AddPhone(object sender, EventArgs e)
         {
-            Procedures.AddMobileNumber(StudentID, PhoneNumber.Text);
-            FormPanel.Visible = false;
-            ResultPanel.Visible = true;
+            if (!Page.IsValid)
+            {
+                return;
+            }
+            try
+            {
+                Procedures.AddMobileNumber(StudentID, PhoneNumber.Text);
+                FormPanel.Visible = false;
+                ResultPanel.Visible = true;
+            }
+            catch(SqlException sqlEx) 
+            { 
+                if (sqlEx.Message.Contains("PRIMARY KEY"))
+                {
+                    FormPanel.Visible = false;
+                    ResultPanel.Visible = false;
+                    ErrorPanel.Visible = true;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            
         }
     }
 }

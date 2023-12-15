@@ -1,4 +1,8 @@
 ﻿-- Adding 10 records to the Course table
+
+INSERT INTO Admins
+VALUES(1,'admin123')
+
 INSERT INTO Course VALUES
 ( 'Mathematics 2', 'Science', 1, 3, 2),
 ( 'CSEN 2', 'Engineering', 1, 4, 2),
@@ -118,6 +122,9 @@ INSERT INTO Student_Instructor_Course_Take VALUES
 (8, 8, 8, 'S24R1', 'Normal', 'A+'),
 (9, 9, 9, 'S24R2', 'Normal', 'FF'),
 (10, 10, 10, 'F24', 'First_makeup', 'B-');
+
+SELECT password FROM Student WHERE student_id = 9
+
 
 
 

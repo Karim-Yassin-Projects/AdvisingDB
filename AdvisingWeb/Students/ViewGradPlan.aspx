@@ -2,6 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">    
 <asp:GridView ID="gridGradPlan" runat="server"
     AutoGenerateColumns="false"
+    CssClass="table table-striped"
     ShowHeaderWhenEmpty="true" Width="100%">
     <Columns>
         <asp:BoundField HeaderText="Student ID" DataField="student_id"/>

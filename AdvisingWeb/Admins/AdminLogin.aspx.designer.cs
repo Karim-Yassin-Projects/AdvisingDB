@@ -7,56 +7,47 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AdvisingWeb.Students
+namespace AdvisingWeb.Scripts.Admins
 {
 
 
-    public partial class AddingPhoneNumberPage
+    public partial class AdminLogin
     {
 
         /// <summary>
-        /// ResultPanel control.
+        /// AdminID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel ResultPanel;
+        protected global::System.Web.UI.WebControls.TextBox AdminID;
 
         /// <summary>
-        /// ErrorPanel control.
+        /// Password control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel ErrorPanel;
+        protected global::System.Web.UI.WebControls.TextBox Password;
 
         /// <summary>
-        /// FormPanel control.
+        /// InvalidLogin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel FormPanel;
+        protected global::System.Web.UI.WebControls.Label InvalidLogin;
 
         /// <summary>
-        /// PhoneNumber control.
+        /// Login control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox PhoneNumber;
-
-        /// <summary>
-        /// AddPhoneButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button AddPhoneButton;
+        protected global::System.Web.UI.WebControls.Button Login;
     }
 }
