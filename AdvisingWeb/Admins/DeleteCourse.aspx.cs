@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 
 namespace AdvisingWeb.Admins
 {
-    public partial class DeleteCourse : System.Web.UI.Page
+    public partial class DeleteCourse : AdminPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
