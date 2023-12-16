@@ -1,4 +1,4 @@
-﻿<%@ Page Title="AdvisorLogin" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="LoginPage.aspx.cs" Inherits="AdvisingWeb.Advisors.LoginPage" %>
+﻿<%@ Page Title="Advisor Login" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="LoginPage.aspx.cs" Inherits="AdvisingWeb.Advisors.LoginPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Menu" runat="server">
 </asp:Content>

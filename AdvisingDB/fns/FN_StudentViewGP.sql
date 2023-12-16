@@ -13,5 +13,3 @@ INNER JOIN Course c ON c.course_id = gc.course_id
 WHERE s.student_id = @studentID
 )
 
-SELECT * FROM dbo.FN_StudentViewGP(1)
-SELECT password from Student where student_id = 1

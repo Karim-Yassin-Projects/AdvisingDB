@@ -29,7 +29,7 @@ namespace AdvisingWeb.Admins
                 FormPanel.Visible = false;
                 ResultPanel.Visible = true;
             }
-            catch (Exception ex)
+            catch
             {
                 FormPanel.Visible = false;
                 ErrorPanel.Visible = true;

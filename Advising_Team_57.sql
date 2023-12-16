@@ -17,6 +17,11 @@ GO
 
 CREATE OR ALTER PROC CreateAllTables AS
 
+CREATE TABLE Admins(
+admin_id INT PRIMARY KEY,
+password VARCHAR(40)
+)
+
 CREATE TABLE Advisor(
 advisor_id INT PRIMARY KEY IDENTITY,
 advisor_name VARCHAR(40) NOT NULL,
@@ -343,6 +348,9 @@ IF  EXISTS (SELECT 1 FROM Advisor WHERE advisor_id = @id AND password = @passwor
 RETURN @success
 END
 
+GO
+
+
 
 GO
 
@@ -410,6 +418,7 @@ FROM Course_Semester cs
 INNER JOIN Course C on cs.course_id = c.course_id 
 WHERE cs.semester_code = @semester_code)
 
+
 GO
 
 CREATE OR ALTER FUNCTION FN_StudentCheckSMEligiability(
@@ -452,6 +461,9 @@ SET @success = 1
 RETURN @success
 END
 
+go
+
+
 
 GO
 
@@ -488,6 +500,7 @@ WHERE s.student_id = @studentID
 )
 
 
+
 GO
 
 CREATE OR ALTER FUNCTION FN_StudentViewSlot(
@@ -521,7 +534,7 @@ GO
 
 CREATE OR ALTER PROC AdminListStudentsWithAdvisors
 AS 
-SELECT s.*, a.*
+SELECT s.*, a.advisor_name, a.email as advisor_email, a.office
 FROM Student s
 LEFT JOIN
 Advisor a ON s.advisor_id = a.advisor_id
@@ -1076,7 +1089,8 @@ BEGIN
 	WHERE sict.student_id = @StudentID
 	AND course_id = @CourseID
 	AND semester_code = @studentCurrentSemester
-	AND sict.grade is NULL OR sict.grade IN( 'F',  'FF') 
+	AND sict.grade is NULL OR sict.grade IN('F',  'FF') 
+	AND sict.exam_type = 'Normal'
 	)
 	BEGIN
 		IF NOT EXISTS (
@@ -1091,10 +1105,19 @@ BEGIN
 			FROM MakeUp_Exam
 			WHERE course_id = @CourseID
 			ORDER BY date DESC
+			
 			INSERT INTO Exam_Student (exam_id, student_id, course_id)
 			VALUES(@examID, @StudentID, @CourseID)
+			UPDATE Student_Instructor_Course_Take
+			SET exam_type = 'First_makeup', grade = NULL
+			WHERE course_id = @CourseID AND student_id = @StudentID
+			AND semester_code = @studentCurrentSemester
+
+			SELECT @@ROWCOUNT
+			RETURN
 		END
 	END
+	SELECT 0
 END
 
 
@@ -1109,7 +1132,7 @@ AS
 BEGIN 
 IF NOT EXISTS (SELECT * FROM Course_Semester WHERE course_id = @courseID AND semester_code = @studentCurrentSemester)
 BEGIN
-	PRINT('Registration for second makeup failed because course is not offered in the current semester.')
+	SELECT 'Registration for second makeup failed because course is not offered in the current semester.', CAST(0 as bit)
 	RETURN
 END
 IF dbo.FN_StudentCheckSMEligiability(@courseID, @studentID) = 1
@@ -1122,17 +1145,23 @@ BEGIN
 	ORDER BY date
 	IF @exam_id IS NULL
 	BEGIN 
-		PRINT('Registration for second makeup failed because there is no exam scheduled.')
+		SELECT 'Registration for second makeup failed because there is no exam scheduled.', CAST(0 as bit)
+		RETURN
+	END 
+
+	IF EXISTS (SELECT * FROM Exam_student WHERE student_id = @studentID AND exam_id = @exam_id) 
+	BEGIN 
+		SELECT 'Student is already registered for this exam.', CAST(0 as bit)
 		RETURN
 	END 
 
 	INSERT INTO Exam_Student(exam_id, student_id, course_id)
 	VALUES(@exam_id, @studentID, @courseID)
-	PRINT('Registration for second makeup successful.') 
+	SELECT 'Registration for second makeup successful.', CAST(1 as bit)
 END
 ELSE
 BEGIN
-	PRINT('Registration for second makeup failed because student is not eligible.')
+	SELECT 'Registration for second makeup failed because student is not eligible.', CAST(0 as bit)
 END
 END
 
@@ -1176,6 +1205,8 @@ SELECT @advisor_id = advisor_id
 FROM Student s
 WHERE s.student_id = @student_id
 
+
+
 INSERT INTO Request(student_id,credit_hours,type,comment, advisor_id)
 VALUES(@student_id, @credit_hours, @type, @comment, @advisor_id)
 
@@ -1198,6 +1229,7 @@ SELECT @advisorID = advisor_id FROM Student WHERE student_id = @studentID
 INSERT INTO Request(type, comment, status, credit_hours, student_id, advisor_id, course_id)
 VALUES(@type, @comment, 'pending', @creditHours, @studentID, @advisorID, @courseID)
 END
+
 
 
 GO
@@ -1242,7 +1274,7 @@ AND c.course_id NOT IN(
 SELECT sict.course_id
 FROM Student_Instructor_Course_Take sict
 WHERE sict.student_id = @studentID 
-AND (sict.grade NOT IN('F', 'FF') OR dbo.FN_StudentCheckSMEligibility(c.course_id, @studentID) = 1)
+AND (sict.grade NOT IN('F', 'FF') OR dbo.FN_StudentCheckSMEligiability(c.course_id, @studentID) = 1)
 )
 END
 
@@ -1267,7 +1299,7 @@ AND c.course_id NOT IN(
 SELECT sict.course_id
 FROM Student_Instructor_Course_Take sict
 WHERE sict.student_id = @studentID 
-AND (sict.grade NOT IN('F', 'FF') OR dbo.FN_StudentCheckSMEligibility(c.course_id, @studentID) = 1)
+AND (sict.grade NOT IN('F', 'FF') OR dbo.FN_StudentCheckSMEligiability(c.course_id, @studentID) = 1)
 )
 END
 

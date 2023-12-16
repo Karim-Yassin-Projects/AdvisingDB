@@ -5,35 +5,50 @@
     <div class="row">
 
         <div class="col-6 col-md-3 col-xl-2">
-            <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/OptionalCoursesPage">View Optional Courses</asp:HyperLink></div>
+            <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/OptionalCoursesPage">View Optional Courses</asp:HyperLink>
+        </div>
         <div class="col-6 col-md-3 col-xl-2">
-            <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/RequiredCoursesPage">View Required Courses</asp:HyperLink></div>
+            <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/RequiredCoursesPage">View Required Courses</asp:HyperLink>
+        </div>
         <div class="col-6 col-md-3 col-xl-2">
-            <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/AvailableCoursesPage">View Available Courses</asp:HyperLink></div>
+            <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/AvailableCoursesPage">View Available Courses</asp:HyperLink>
+        </div>
         <div class="col-6 col-md-3 col-xl-2">
-            <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/ViewGradPlan">View Graduation Plan</asp:HyperLink></div>
+            <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/ViewGradPlan">View Graduation Plan</asp:HyperLink>
+        </div>
         <div class="col-6 col-md-3 col-xl-2">
-            <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/UpcomingInstallment">View Upcoming Installments</asp:HyperLink></div>
+            <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/UpcomingInstallment">View Upcoming Installments</asp:HyperLink>
+        </div>
         <div class="col-6 col-md-3 col-xl-2">
-            <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/AddingPhoneNumberPage">Add Phone Number</asp:HyperLink></div>
+            <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/AddingPhoneNumberPage">Add Phone Number</asp:HyperLink>
+        </div>
         <div class="col-6 col-md-3 col-xl-2">
-            <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/ViewCoursesandExams">View courses and exam details</asp:HyperLink></div>
+            <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/ViewCoursesandExams">View courses and exam details</asp:HyperLink>
+        </div>
         <div class="col-6 col-md-3 col-xl-2">
-            <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/MissingCoursesPage">View Missing Courses</asp:HyperLink></div>
+            <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/MissingCoursesPage">View Missing Courses</asp:HyperLink>
+        </div>
         <div class="col-6 col-md-3 col-xl-2">
-            <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/SendingCourseRequestPage">Send Course Request</asp:HyperLink></div>
+            <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/SendingCourseRequestPage">Send Course Request</asp:HyperLink>
+        </div>
         <div class="col-6 col-md-3 col-xl-2">
-            <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/SendingCHRequestPage">Send Credit Hour Request</asp:HyperLink></div>
+            <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/SendingCHRequestPage">Send Credit Hour Request</asp:HyperLink>
+        </div>
         <div class="col-6 col-md-3 col-xl-2">
-            <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/CoursesandPrerequisites">View Courses and their prerequisites</asp:HyperLink></div>
+            <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/CoursesandPrerequisites">View Courses and their prerequisites</asp:HyperLink>
+        </div>
         <div class="col-6 col-md-3 col-xl-2">
-            <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/FirstMakeupRegistration">Register for first makeup</asp:HyperLink></div>
+            <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/FirstMakeupRegistration">Register for first makeup</asp:HyperLink>
+        </div>
         <div class="col-6 col-md-3 col-xl-2">
-            <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/SecondMakeupRegistration">Register for second makeup</asp:HyperLink></div>
+            <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/SecondMakeupRegistration">Register for second makeup</asp:HyperLink>
+        </div>
         <div class="col-6 col-md-3 col-xl-2">
-    <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/SlotCourseInstructor">View course slots with instructor</asp:HyperLink></div>
-            <div class="col-6 col-md-3 col-xl-2">
-<asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/SlotsInstructor">View slots of courses taught by instructor</asp:HyperLink></div>
+            <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/SlotCourseInstructor">View course slots with instructor</asp:HyperLink>
+        </div>
+        <div class="col-6 col-md-3 col-xl-2">
+            <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Students/SlotsInstructor">View slots of courses taught by instructor</asp:HyperLink>
+        </div>
     </div>
 
 </asp:Content>
