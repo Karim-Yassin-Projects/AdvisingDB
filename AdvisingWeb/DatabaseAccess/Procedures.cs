@@ -11,6 +11,29 @@ namespace AdvisingWeb.DatabaseAccess
     {
         private static readonly string connectionString = ConfigurationManager.ConnectionStrings["AdvisingDB"].ConnectionString;
 
+        public static void AddCourse(string major, int semester, int credit_hours, string course_name, bool is_offered)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "Procedures_AdminAddingCourse";
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("@major", major);
+                    command.Parameters.AddWithValue("@semester", semester);
+                    command.Parameters.AddWithValue("@credit_hours", credit_hours);
+                    command.Parameters.AddWithValue("@course_name", course_name);
+                    command.Parameters.AddWithValue("@offered", is_offered);
+
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
         public static DataTable ViewOptionalCourses(int studentID, string currentSemesterCode)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
