@@ -43,5 +43,11 @@
         <div class="col-6 col-md-3 col-xl-2">
             <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Admins/ViewStudentTranscript">View Students' transcripts</asp:HyperLink>
         </div>
+        <div class="col-6 col-md-3 col-xl-2">
+            <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Admins/AddSemester">Add Semester</asp:HyperLink>
+        </div>
+        <div class="col-6 col-md-3 col-xl-2">
+            <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Admins/AddCourse">Add Course</asp:HyperLink>
+        </div>
     </div>
 </asp:Content>

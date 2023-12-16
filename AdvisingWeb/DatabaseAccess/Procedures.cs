@@ -261,6 +261,26 @@ namespace AdvisingWeb.DatabaseAccess
             }
         }
 
+        public static void AdminAddSemester(string semesterCode, DateTime startDate, DateTime endDate)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "AdminAddingSemester";
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@semester_code", semesterCode);
+                    command.Parameters.AddWithValue("@start_date", startDate);
+                    command.Parameters.AddWithValue("@end_date", endDate);
+
+                    command.ExecuteNonQuery();
+
+                }
+            }
+        }
+
         public static (string message, bool success) RegisterForSecondMakeup(int studentId, int courseId, string semesterCode)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))

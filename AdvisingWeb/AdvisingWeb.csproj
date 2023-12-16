@@ -103,7 +103,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="Admins\AddCourse.aspx" />
     <Content Include="Admins\AddMakeup.aspx" />
+    <Content Include="Admins\AddSemester.aspx" />
     <Content Include="Admins\DeleteCourse.aspx" />
     <Content Include="Admins\DeleteSlot.aspx" />
     <Content Include="Admins\DisplayPayments.aspx" />
@@ -225,12 +227,26 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admins\AddCourse.aspx.cs">
+      <DependentUpon>AddCourse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admins\AddCourse.aspx.designer.cs">
+      <DependentUpon>AddCourse.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admins\AddMakeup.aspx.cs">
       <DependentUpon>AddMakeup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admins\AddMakeup.aspx.designer.cs">
       <DependentUpon>AddMakeup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admins\AddSemester.aspx.cs">
+      <DependentUpon>AddSemester.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admins\AddSemester.aspx.designer.cs">
+      <DependentUpon>AddSemester.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admins\Admins.master.cs">
       <DependentUpon>Admins.master</DependentUpon>

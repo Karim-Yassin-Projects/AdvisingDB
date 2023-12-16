@@ -8,7 +8,7 @@
             </label>
             <div class="col-md-10">
                 <asp:TextBox ID="CourseId" CssClass="form-control" runat="server" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="CourseId" Display="Dynamic" Text="Please enter coruse id" CssClass="text-danger" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="CourseId" Display="Dynamic" Text="Please enter course id" CssClass="text-danger" />
                 <asp:RangeValidator runat="server" MinimumValue="1" MaximumValue="2147483647" Type="Integer" ControlToValidate="CourseId" Display="Dynamic" Text="Please enter a valid course id" CssClass="text-danger" />
             </div>
         </div>

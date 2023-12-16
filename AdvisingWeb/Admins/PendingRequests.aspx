@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admins/Admins.Master" AutoEventWireup="true" CodeBehind="PendingRequests.aspx.cs" Inherits="AdvisingWeb.Admins.PendingRequests" %>
+﻿<%@ Page Title="Pending Requests" Language="C#" MasterPageFile="~/Admins/Admins.Master" AutoEventWireup="true" CodeBehind="PendingRequests.aspx.cs" Inherits="AdvisingWeb.Admins.PendingRequests" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:GridView ID="gridRequests" runat="server"
