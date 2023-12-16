@@ -1,0 +1,12 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AdvisorMaster.master.cs" Inherits="AdvisingWeb.Advisors.AdvisorMaster" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="Menu" runat="server">
+    <li class="nav-item"><a class="nav-link" runat="server" href="~/Advisors/AdvisorHomePage">Home</a></li>
+    <li class="nav-item nav-link">Welcome
+        <asp:Label runat="server" ID="AdvisorNameLabel" /></li>
+    <li class="nav-item nav-link">Your Advisor ID:<asp:Label runat="server" ID="AdvisorIDLabel" /></li>
+    <asp:LinkButton CssClass="nav-link" CausesValidation="false" runat="server" OnClick="LogOutClick">Log out</asp:LinkButton>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:ContentPlaceHolder runat="server" ID="MainContent"></asp:ContentPlaceHolder>
+</asp:Content>

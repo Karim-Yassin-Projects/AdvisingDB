@@ -58,6 +58,24 @@ namespace AdvisingWeb.DatabaseAccess
             }
         }
 
+        public static string GetAdvisorName(int advisorID)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "SELECT advisor_name FROM Advisor WHERE advisor_id=@advisorId";
+                    command.CommandType = CommandType.Text;
+
+                    command.Parameters.AddWithValue("@advisorId", advisorID);
+
+                    return (string)command.ExecuteScalar();
+                }
+            }
+        }
+
         public static List<ListItem> GetCourses()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))

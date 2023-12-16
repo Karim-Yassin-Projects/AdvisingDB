@@ -113,6 +113,9 @@
     <Content Include="Admins\ViewActiveStudents.aspx" />
     <Content Include="Admins\ViewStudentTranscript.aspx" />
     <Content Include="Admins\ViewGradPlan.aspx" />
+    <Content Include="Advisors\AdvisorHomePage.aspx" />
+    <Content Include="Advisors\LoginPage.aspx" />
+    <Content Include="Advisors\AdvisorRegistration.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -168,6 +171,7 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="Admins\Admins.master" />
+    <Content Include="Advisors\AdvisorMaster.master" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -297,6 +301,37 @@
     </Compile>
     <Compile Include="Admins\ViewGradPlan.aspx.designer.cs">
       <DependentUpon>ViewGradPlan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Advisors\AdvisorHomePage.aspx.cs">
+      <DependentUpon>AdvisorHomePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Advisors\AdvisorHomePage.aspx.designer.cs">
+      <DependentUpon>AdvisorHomePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Advisors\LoginPage.aspx.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Advisors\LoginPage.aspx.designer.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Advisors\AdvisorMaster.master.cs">
+      <DependentUpon>AdvisorMaster.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Advisors\AdvisorMaster.master.designer.cs">
+      <DependentUpon>AdvisorMaster.master</DependentUpon>
+    </Compile>
+    <Compile Include="Advisors\AdvisorPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Advisors\AdvisorRegistration.aspx.cs">
+      <DependentUpon>AdvisorRegistration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Advisors\AdvisorRegistration.aspx.designer.cs">
+      <DependentUpon>AdvisorRegistration.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
@@ -534,7 +569,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Advisor\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>

@@ -31,6 +31,25 @@ namespace AdvisingWeb.DatabaseAccess
             }
         }
 
+        public static bool AdvisorLogin(int advisorId, string password)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "SELECT dbo.FN_AdvisorLogin(@advisorId, @password)";
+                    command.CommandType = CommandType.Text;
+
+                    command.Parameters.AddWithValue("@advisorId", advisorId);
+                    command.Parameters.AddWithValue("@password", password);
+
+                    return (bool)command.ExecuteScalar();
+                }
+            }
+        }
+
         public static DataTable ViewAvailableCourses(string currentSemesterCode)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
