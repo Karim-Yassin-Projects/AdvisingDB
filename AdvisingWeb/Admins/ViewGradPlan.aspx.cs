@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using AdvisingWeb.Scripts.Admins;
+using AdvisingWeb.Admins;
 
 namespace AdvisingWeb.Admins
 {

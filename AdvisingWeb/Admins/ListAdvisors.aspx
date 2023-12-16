@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Advisors" Language="C#" MasterPageFile="~/Admins/Admins.Master" AutoEventWireup="true" CodeBehind="ListAdvisors.aspx.cs" Inherits="AdvisingWeb.Scripts.Admins.ListAdvisors" %>
+﻿<%@ Page Title="Advisors" Language="C#" MasterPageFile="~/Admins/Admins.Master" AutoEventWireup="true" CodeBehind="ListAdvisors.aspx.cs" Inherits="AdvisingWeb.Admins.ListAdvisors" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:GridView ID="gridAdvisors" runat="server"
     AutoGenerateColumns="false"

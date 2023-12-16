@@ -7,16 +7,17 @@ using System.Web;
 using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using AdvisingWeb.Admins;
 
 namespace AdvisingWeb.Admins
 {
-    public partial class AddMakeup : System.Web.UI.Page
+    public partial class AddMakeup : AdminPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
-        protected void AddButtinClick(object sender, EventArgs e)
+        protected void AddButtonClick(object sender, EventArgs e)
         {
             string s = WebConfigurationManager.ConnectionStrings["AdvisingDB"].ToString();
 

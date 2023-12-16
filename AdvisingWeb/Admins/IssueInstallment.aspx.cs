@@ -45,6 +45,8 @@ namespace AdvisingWeb.Admins
             }
             catch(Exception )
             {
+                ErrorPanel.Visible = true;
+                FormPanel.Visible = false;
                 return;
             }
             conn.Close();

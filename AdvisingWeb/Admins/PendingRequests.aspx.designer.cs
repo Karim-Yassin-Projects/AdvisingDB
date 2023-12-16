@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AdvisingWeb.Scripts.Admins
+namespace AdvisingWeb.Admins
 {
 
 

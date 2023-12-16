@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace AdvisingWeb.Scripts.Admins
+namespace AdvisingWeb.Admins
 {
     public partial class AdminHomePage : AdminPage
     {

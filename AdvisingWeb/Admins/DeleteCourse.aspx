@@ -3,7 +3,7 @@
 <asp:Content runat="server" ContentPlaceHolderID="MainContent">
     <asp:Panel runat="server" CssClass="form-horizontal" ID="FormPanel">
         <div class="form-group row">
-            <label for="PaymentId" class="form-label col-md-2 text-end">
+            <label for="CourseId" class="form-label col-md-2 text-end">
                 Enter Course Id:
             </label>
             <div class="col-md-10">
@@ -14,7 +14,7 @@
         </div>
         <div class="form-group mt-4">
             <div class="offset-md-2">
-                <asp:Button CssClass="btn btn-primary" ID="DeleteButton" runat="server" OnClick="DeleteButtonClick" Text="Issue installments" />
+                <asp:Button CssClass="btn btn-primary" ID="DeleteButton" runat="server" OnClick="DeleteButtonClick" Text="Delete Course" />
             </div>
         </div>
     </asp:Panel>

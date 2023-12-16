@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Admin Login" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AdminLogin.aspx.cs" Inherits="AdvisingWeb.Scripts.Admins.AdminLogin" %>
+﻿<%@ Page Title="Admin Login" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AdminLogin.aspx.cs" Inherits="AdvisingWeb.Admins.AdminLogin" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="form-horizontal">
     <div class="form-group">

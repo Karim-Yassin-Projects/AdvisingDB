@@ -4,7 +4,7 @@
     <asp:Panel runat="server" CssClass="form-horizontal" ID="FormPanel">
         <div class="form-group row">
             <label for="PaymentId" class="form-label col-md-2 text-end">
-                Enter PaymentId Id:
+                Enter Payment Id:
             </label>
             <div class="col-md-10">
                 <asp:TextBox ID="PaymentId" CssClass="form-control" runat="server" />
@@ -20,5 +20,8 @@
     </asp:Panel>
     <asp:Panel runat="server" CssClass="my-5 alert alert-info" Visible="false" ID="ResultPanel">
         Installments issued successfully.
+    </asp:Panel>
+     <asp:Panel runat="server" CssClass="my-5 alert alert-danger" Visible="false" ID="ErrorPanel">
+        Cannot issue installments.    
     </asp:Panel>
 </asp:Content>

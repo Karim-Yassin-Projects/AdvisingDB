@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 
-namespace AdvisingWeb.Scripts.Admins
+namespace AdvisingWeb.Admins
 {
     public class AdminPage : Page
     {
