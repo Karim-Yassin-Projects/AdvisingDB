@@ -103,6 +103,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="Admins\AddMakeup.aspx" />
+    <Content Include="Admins\DeleteCourse.aspx" />
+    <Content Include="Admins\DeleteSlot.aspx" />
+    <Content Include="Admins\DisplayPayments.aspx" />
+    <Content Include="Admins\FetchSemsterOfferedCourse.aspx" />
+    <Content Include="Admins\IssueInstallment.aspx" />
+    <Content Include="Admins\UpdateStudentStatus.aspx" />
+    <Content Include="Admins\ViewActiveStudents.aspx" />
+    <Content Include="Admins\ViewStudentTranscript.aspx" />
+    <Content Include="Admins\ViewGradPlan.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -211,12 +221,82 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admins\AddMakeup.aspx.cs">
+      <DependentUpon>AddMakeup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admins\AddMakeup.aspx.designer.cs">
+      <DependentUpon>AddMakeup.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admins\Admins.master.cs">
       <DependentUpon>Admins.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admins\Admins.master.designer.cs">
       <DependentUpon>Admins.master</DependentUpon>
+    </Compile>
+    <Compile Include="Admins\DeleteCourse.aspx.cs">
+      <DependentUpon>DeleteCourse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admins\DeleteCourse.aspx.designer.cs">
+      <DependentUpon>DeleteCourse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admins\DeleteSlot.aspx.cs">
+      <DependentUpon>DeleteSlot.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admins\DeleteSlot.aspx.designer.cs">
+      <DependentUpon>DeleteSlot.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admins\DisplayPayments.aspx.cs">
+      <DependentUpon>DisplayPayments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admins\DisplayPayments.aspx.designer.cs">
+      <DependentUpon>DisplayPayments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admins\FetchSemsterOfferedCourse.aspx.cs">
+      <DependentUpon>FetchSemsterOfferedCourse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admins\FetchSemsterOfferedCourse.aspx.designer.cs">
+      <DependentUpon>FetchSemsterOfferedCourse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admins\IssueInstallment.aspx.cs">
+      <DependentUpon>IssueInstallment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admins\IssueInstallment.aspx.designer.cs">
+      <DependentUpon>IssueInstallment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admins\UpdateStudentStatus.aspx.cs">
+      <DependentUpon>UpdateStudentStatus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admins\UpdateStudentStatus.aspx.designer.cs">
+      <DependentUpon>UpdateStudentStatus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admins\ViewActiveStudents.aspx.cs">
+      <DependentUpon>ViewActiveStudents.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admins\ViewActiveStudents.aspx.designer.cs">
+      <DependentUpon>ViewActiveStudents.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admins\ViewStudentTranscript.aspx.cs">
+      <DependentUpon>ViewStudentTranscript.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admins\ViewStudentTranscript.aspx.designer.cs">
+      <DependentUpon>ViewStudentTranscript.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admins\ViewGradPlan.aspx.cs">
+      <DependentUpon>ViewGradPlan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admins\ViewGradPlan.aspx.designer.cs">
+      <DependentUpon>ViewGradPlan.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
