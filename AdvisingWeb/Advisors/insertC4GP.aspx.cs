@@ -19,7 +19,7 @@ namespace shalProj
         protected void insert(object sender, EventArgs e)
         {
 
-            string ConnectionString = WebConfigurationManager.ConnectionStrings["shalProj"].ToString();
+            string ConnectionString = WebConfigurationManager.ConnectionStrings["AdvisingDB"].ConnectionString.ToString();
             SqlConnection conn = new SqlConnection(ConnectionString);
 
             SqlCommand cmd = new SqlCommand("[Procedures_AdvisorAddCourseGP]", conn);
