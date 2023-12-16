@@ -18,5 +18,10 @@ namespace AdvisingWeb.Advisors
             }
 
         }
+
+        protected void Grid_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+        }
     }
 }
