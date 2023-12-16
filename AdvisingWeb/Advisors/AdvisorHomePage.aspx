@@ -23,7 +23,7 @@
             <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Advisors/ViewAllRequests">View All Requests</asp:HyperLink>
         </div>
         <div class="col-6 col-md-3 col-xl-2">
-            <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Advisors/ViewPendingRequests">ViewPendingRequests</asp:HyperLink>
+            <asp:HyperLink runat="server" CssClass="btn btn-outline-primary py-5 m-2 d-block" Height="150px" NavigateUrl="~/Advisors/ViewPendingRequests">View Pending Requests</asp:HyperLink>
         </div>
         
     </div>

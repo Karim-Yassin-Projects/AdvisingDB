@@ -11,6 +11,31 @@ namespace AdvisingWeb.DatabaseAccess
     {
         private static readonly string connectionString = ConfigurationManager.ConnectionStrings["AdvisingDB"].ConnectionString;
 
+        public static DataTable AdvisorPendingRequests(int advisorId)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "Procedures_AdvisorViewPendingRequests";
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("@advisorID", advisorId);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+
+                        DataTable dt = new DataTable();
+                        dt.Load(reader);
+
+                        return dt;
+                    }
+                }
+            }
+        }
+
         public static void AddCourse(string major, int semester, int credit_hours, string course_name, bool is_offered)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))

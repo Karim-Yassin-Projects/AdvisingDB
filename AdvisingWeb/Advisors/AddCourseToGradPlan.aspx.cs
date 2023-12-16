@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace AdvisingWeb.Advisors
 {
-    public partial class AddCourseToGradPlan : System.Web.UI.Page
+    public partial class AddCourseToGradPlan : AdvisorPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
